@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" class="no-js" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AliViet - Tạo đơn hàng từ hệ thống website</title>
+    <meta name="description" content="">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="js/rs-plugin/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" data-name="skins">
+    <link rel="stylesheet" href="css/layout/wide.css" data-name="layout">
+    <link rel="stylesheet" type="text/css" href="css/switcher.css" media="screen" />
+    <link rel="stylesheet" href="css/testimonails-slider.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="css/toastr.css">
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+
+<body>
+
+    <!--Start Header-->
+    <header id="header">
+        <section id="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <span>Tỷ giá: 3550 Đ/NDT Số dư: 0đ</span>
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2 login-logout-btn">
+                        <a id="loginlogout-btn" href="#">Đăng nhập/Đăng ký</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <!-- Logo / Mobile Menu -->
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <div id="mobile-navigation">
+                        <a href="#menu" class="menu-trigger">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+
+                    <div id="logo">
+                        <h1><a href="index.html"><img src="img/logo_min_241x64.png" alt="Clava" /></a></h1>
+                    </div>
+                </div>
+
+
+                <!-- Navigation
+				================================================== -->
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <nav id="navigation" class="menu">
+                        <ul id="responsive">
+
+                            <li><a href="index.html" id="current">Trang chủ</a>
+                            </li>
+
+                            <li><a href="#">Quy định</a>
+                            </li>
+
+                            <li><a href="#">Giới thiệu</a>
+                            </li>
+
+                            <li><a href="#">FAQ</a>
+                            </li>
+
+                            <li><a href="price.html">Báo giá</a>
+                            </li>
+
+                            <li><a href="http://hangcongxuong.com" target="_blank">Hàng công xưởng</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Container / End -->
+    </header>
+    <!--End Header-->
+    <!--  Start  make order-->
+    <section class="wrapper">
+        <section class="page_head">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h2>Tạo đơn hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="row sub_content" id="make-order-area">
+                <div class="carousel-intro">
+                    <div class="col-md-12">
+                        <div class="dividerLatest">
+                            <h4>Tạo đơn hàng từ hệ thống WEBSITE</h4>
+                            <div class="gDot"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-2">Link sản phẩm</th>
+                                    <th class="col-sm-2">Màu sắc</th>
+                                    <th class="col-sm-2">Size</th>
+                                    <th class="col-sm-2">Số lượng</th>
+                                    <th class="col-sm-2">Giá</th>
+                                    <th class="col-sm-2">Ghi chú</th>
+                                    <th class="col-sm-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="listProduct" data-bind="foreach: productItems">
+                                <tr class="product-item">
+                                    <td>
+                                        <input class="form-control" data-bind="value: linkSource" placeholder="Nhập link sản phẩm" required="true" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" data-bind="value: color" placeholder="Màu sắc" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" data-bind="value: size" placeholder="Nhập size" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" data-bind="value: quantity" placeholder="Số lượng" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" data-bind="value: price" placeholder="Nhập giá" type="text">
+                                    </td>
+                                    <td>
+                                        <textarea class="form-control" data-bind="value: notes" rows="2" placeholder="Ghi chú" type="text"></textarea>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" data-bind="click: $root.removeProduct"><i class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="carousel-intro">
+                    <div class="col-md-12">
+                        <div class="dividerLatest">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="func-btn">
+                    <div class="row container">
+                        <div class="col-xs-12 col-sm-6">
+                            <a class="btn btn-default" data-bind="click: addProduct"><i class="fa fa-plus"></i>Thêm sản phẩm</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <a class="btn btn-info send-order-btn" data-bind="click: createOrder">
+                                <i class="fa fa-shopping-cart"></i> Gửi đơn hàng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  End make order-->
+    <!--start footer-->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="dividerWidget">
+                        <h4>About Us</h4>
+                        <div class="gDot widget"></div>
+                    </div>
+                    <div class="widfoot_content">
+                        <p>Nhiệt tình, chăm chỉ, mến khách</p>
+                        <ul class="contact-details-alt">
+                            <li><i class="fa fa-map-marker"></i>
+                                <p><strong>Địa chỉ</strong>: Tầng 2, Số 99 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p>
+                            </li>
+                            <li><i class="fa fa-user"></i>
+                                <p><strong>Phone</strong>: 0987353639 (Ms. Hà)</p>
+                            </li>
+                            <li><i class="fa fa-user"></i>
+                                <p><strong>Phone</strong>: 0989534826 (Mr. Đạt)</p>
+                            </li>
+                            <li><i class="fa fa-envelope"></i>
+                                <p><strong>Email</strong>: <a href="#">admin@alimex.vn</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="dividerWidget">
+                        <h4>Recent Posts</h4>
+                        <div class="gDot widget"></div>
+                    </div>
+                    <div class="widfoot_content">
+                        <ul class="links">
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Hướng dẫn cách chọn hàng<span>November 07, 2015</span></a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Hướng dẫn cách tìm shop xịn <span>November 05, 2015</span></a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Thủ thuật chọn hàng <span>November 03, 2015</span></a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Tìm nguồn hàng giá tốt <span>November 02, 2015</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="dividerWidget">
+                        <h4>Twitter</h4>
+                        <div class="gDot widget"></div>
+                    </div>
+                    <div class="widfoot_content">
+                        <div class="tweet_go"></div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="dividerWidget">
+                        <h4>Facebook Page</h4>
+                        <div class="gDot widget"></div>
+                    </div>
+                    <div class="widfoot_content">
+                        <div class="fb-page" data-href="https://www.facebook.com/orderhangaliviet" data-width="210" data-height="215" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/orderhangaliviet"><a href="https://www.facebook.com/orderhangaliviet">Dịch vụ Vận chuyển, order hàng Trung Quốc về Việt Nam</a></blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--end footer-->
+
+    <section class="footer_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <p class="copyright">&copy; Copyright AliViet 2015</a>
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="footer_social">
+                        <ul class="footbot_social">
+                            <li><a class="fb" href="https://www.facebook.com/orderhangaliviet" target="_blank" data-placement="top" data-toggle="tooltip" title="Facbook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twtr" href="#." data-placement="top" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="rss" href="#." data-placement="top" data-toggle="tooltip" title="RSS"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Login/Logout Area-->
+    <div class="logmod" id="loginlogout-area">
+        <div class="logmod__wrapper">
+            <span class="logmod__close">Đóng</span>
+            <div class="logmod__container">
+                <ul class="logmod__tabs">
+                    <li data-tabtar="lgm-2"><a href="#">Đăng nhập</a></li>
+                    <li data-tabtar="lgm-1"><a href="#">Đăng ký</a></li>
+                </ul>
+                <div class="logmod__tab-wrapper">
+                    <div class="logmod__tab lgm-1">
+                        <div class="logmod__heading">
+                            <span class="logmod__heading-subtitle">Nhập thông tin cá nhân để hoàn thành <strong>đăng ký</strong></span>
+                        </div>
+                        <div class="logmod__form">
+                            <form accept-charset="utf-8" action="#" class="simform">
+                                <div class="sminputs">
+                                    <div class="input full">
+                                        <label class="string optional" for="user-name">Email*</label>
+                                        <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                    </div>
+                                </div>
+                                <div class="sminputs">
+                                    <div class="input string optional">
+                                        <label class="string optional" for="user-pw">Mật khẩu *</label>
+                                        <input class="string optional" maxlength="255" id="user-pw" placeholder="Mật khẩu" type="password" size="50" />
+                                    </div>
+                                    <div class="input string optional">
+                                        <label class="string optional" for="user-pw-repeat">Nhập lại mật khẩu *</label>
+                                        <input class="string optional" maxlength="255" id="user-pw-repeat" placeholder="Nhập lại mật khẩu" type="password" size="50" />
+                                    </div>
+                                </div>
+                                <div class="simform__actions">
+                                    <input class="sumbit" name="commit" type="sumbit" value="Đăng Ký" />
+                                    <span class="simform__actions-sidetext">Tạo tài khoản đồng nghĩa với bạn đã đồng ý với <a class="special" href="#" target="_blank" role="link">Quy định</a></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="logmod__alter">
+                            <div class="logmod__alter-container">
+                                <a href="#" class="connect facebook">
+                                    <div class="connect__icon">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
+                                    <div class="connect__context">
+                                        <span>Đăng ký với tài khoản <strong>Facebook</strong></span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="connect googleplus">
+                                    <div class="connect__icon">
+                                        <i class="fa fa-google-plus"></i>
+                                    </div>
+                                    <div class="connect__context">
+                                        <span>Đăng ký với tài khoản <strong>Google+</strong></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logmod__tab lgm-2">
+                        <div class="logmod__heading">
+                            <span class="logmod__heading-subtitle">Nhập email và mật khẩu để <strong>đăng nhập</strong></span>
+                        </div>
+                        <div class="logmod__form">
+                            <form accept-charset="utf-8" action="#" class="simform">
+                                <div class="sminputs">
+                                    <div class="input full">
+                                        <label class="string optional" for="user-name">Email*</label>
+                                        <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                    </div>
+                                </div>
+                                <div class="sminputs">
+                                    <div class="input full">
+                                        <label class="string optional" for="user-pw">Mật khẩu *</label>
+                                        <input class="string optional" maxlength="255" id="user-pw" placeholder="Mật khẩu" type="password" size="50" />
+                                        <span class="hide-password">Hiện</span>
+                                    </div>
+                                </div>
+                                <div class="simform__actions">
+                                    <input class="sumbit" name="commit" type="sumbit" value="Đăng nhập" />
+                                    <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Quên mật khẩu?<br>Click here</a></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="logmod__alter">
+                            <div class="logmod__alter-container">
+                                <a href="#" class="connect facebook">
+                                    <div class="connect__icon">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
+                                    <div class="connect__context">
+                                        <span>Đăng nhập với tài khoản <strong>Facebook</strong></span>
+                                    </div>
+                                </a>
+                                <a href="#" class="connect googleplus">
+                                    <div class="connect__icon">
+                                        <i class="fa fa-google-plus"></i>
+                                    </div>
+                                    <div class="connect__context">
+                                        <span>Đăng nhập với tài khoản <strong>Google+</strong></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/retina-1.1.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <!-- jQuery cookie -->
+    <script type="text/javascript" src="js/styleswitch.js"></script>
+    <!-- Style Colors Switcher -->
+
+
+    <script src="js/jquery.superfish.js"></script>
+    <script src="js/jquery.jpanelmenu.js"></script>
+    <script src="js/jquery.blackandwhite.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="js/swipe.js"></script>
+
+    <script type="text/javascript" src="js/tweetable.jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.timeago.js"></script>
+
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/knockout-2.2.0.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/make-order.js"></script>
+
+    <!--    Subiz Chat-->
+    <!--
+<script type='text/javascript'>
+    window._sbzq || function (e) {
+        e._sbzq = [];
+        var t = e._sbzq;
+        t.push(["_setAccount", 31713]);
+        var n = e.location.protocol == "https:" ? "https:" : "http:";
+        var r = document.createElement("script");
+        r.type = "text/javascript";
+        r.async = true;
+        r.src = n + "//static.subiz.com/public/js/loader.js";
+        var i = document.getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(r, i)
+    }(window);
+</script>-->
+
+    <!--  Facebook Fanpage-->
+
+    <!--
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+-->
+    <script type="text/javascript">
+        var a = 1;
+        var vmWebMakeOrder = new WebMakeOrderViewModel();
+        ko.applyBindings(vmWebMakeOrder, document.getElementById("make-order-area"));
+    </script>
+
+</body>
+
+</html>
