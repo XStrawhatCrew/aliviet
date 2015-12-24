@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - orderhang@localhost" uuid="99e38f4d-05aa-46a8-b22f-7115ddf1fb48">
+    <database-info product="MySQL" version="5.6.27-0ubuntu1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="orderhang"/>
+    <table name="order_bill" schema="" catalog="orderhang" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="staff_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="status_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_OrderCustomerId" columns="customer_id" ref-table="user" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_OrderStaffId" columns="staff_id" ref-table="user" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_OrderStatus" columns="status_id" ref-table="status" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_ProductOrder" table="product" schema="" catalog="orderhang" columns="order_id"/>
+      <index name="fk_OrderCustomerId" unique="false" columns="customer_id"/>
+      <index name="fk_OrderStaffId" unique="false" columns="staff_id"/>
+      <index name="fk_OrderStatus" unique="false" columns="status_id"/>
+    </table>
+    <table name="product" schema="" catalog="orderhang" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="link_source" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="shop_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="color" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="notes" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="size" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="status_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="order_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_ProductOrder" columns="order_id" ref-table="order_bill" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_ProductStatus" columns="status_id" ref-table="status" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_ProductOrder" unique="false" columns="order_id"/>
+      <index name="fk_ProductStatus" unique="false" columns="status_id"/>
+    </table>
+    <table name="role" schema="" catalog="orderhang" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_UserRole" table="user" schema="" catalog="orderhang" columns="role_id"/>
+    </table>
+    <table name="status" schema="" catalog="orderhang" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_OrderStatus" table="order_bill" schema="" catalog="orderhang" columns="status_id"/>
+      <exported-key name="fk_ProductStatus" table="product" schema="" catalog="orderhang" columns="status_id"/>
+    </table>
+    <table name="user" schema="" catalog="orderhang" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_active" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7" def="YicxJw=="/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_created" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_UserRole" columns="role_id" ref-table="role" ref-schema="" ref-catalog="orderhang" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_OrderCustomerId" table="order_bill" schema="" catalog="orderhang" columns="customer_id"/>
+      <exported-key name="fk_OrderStaffId" table="order_bill" schema="" catalog="orderhang" columns="staff_id"/>
+      <index name="email" unique="true" columns="email"/>
+      <index name="username" unique="true" columns="username"/>
+      <index name="fk_UserRole" unique="false" columns="role_id"/>
+    </table>
+  </data-source>
+</component>
