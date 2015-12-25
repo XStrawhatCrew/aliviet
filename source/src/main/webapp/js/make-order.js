@@ -19,7 +19,7 @@ var WebMakeOrderViewModel = function () {
 
 
     self.makeANewOrder = function () {
-        var order = ko.observableArray([]);
+        var order = ko.observableArray();
         order.push(self.makeANewProduct());
         return order;
     };
@@ -32,16 +32,13 @@ var WebMakeOrderViewModel = function () {
 
 
 
-    self.addProduct = function (order) {
-        order.push(self.makeANewProduct());
+    self.addProduct = function (orderIndex, data, event) {
+        self.orderItems()[orderIndex()].push(self.makeANewProduct());
     };
 
-    self.removeProduct = function (product) {
-        if (self.productItems().length > 1) {
-            self.productItems.remove(product);
-        } else {
-            toastr.error("Bạn cần ít nhất một sản phẩm để tạo đơn hàng", "Không thể xoá");
-        }
+    self.removeProduct = function (productIndex, data, event, orderIndex) {
+        self.orderItems()[orderIndex()].splice(productIndex(), 1);
+
     };
 
     self.createOrder = function () {

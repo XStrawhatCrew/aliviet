@@ -90,7 +90,7 @@
                                     <textarea class="form-control" data-bind="value: $data.notes" rows="2" placeholder="Ghi chú" type="text"></textarea>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" data-bind="click: $root.removeProduct"><i class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
+                                    <a class="btn btn-danger" data-bind="click: function(data, event) { $root.removeProduct($index, data, event, $parentContext.$index);}"><i class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
                                 </td>
                             </tr>
                             <!-- /ko -->
@@ -108,7 +108,7 @@
                 <div class="func-btn">
                     <div class="row container">
                         <div class="col-xs-12 col-sm-2">
-                            <a class="btn btn-default" data-bind="click: $root.addProduct"><i class="fa fa-plus"></i>Thêm sản phẩm</a>
+                            <a class="btn btn-default" data-bind="click: function(data, event) { $root.addProduct($index, data, event); }"><i class="fa fa-plus"></i>Thêm sản phẩm</a>
                         </div>
                         <div class="col-xs-12 col-sm-4">
                             <a class="btn btn-success " data-bind="click: $root.addOrder" >
