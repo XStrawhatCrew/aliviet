@@ -37,7 +37,15 @@ var WebMakeOrderViewModel = function () {
     };
 
     self.removeProduct = function (productIndex, data, event, orderIndex) {
-        self.orderItems()[orderIndex()].splice(productIndex(), 1);
+        if(self.orderItems().length == 1 && self.orderItems()[0]().length == 1) {
+            toastr.error("Bạn cần ít nhất một sản phẩm để đặt hàng", "Không thể xoá");
+        } else {
+            self.orderItems()[orderIndex()].splice(productIndex(), 1);
+
+            if (self.orderItems()[orderIndex()]().length == 0) {
+                self.orderItems.splice(orderIndex(), 1);
+            }
+        }
 
     };
 
