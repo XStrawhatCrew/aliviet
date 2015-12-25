@@ -1,0 +1,248 @@
+﻿/* This is for tablet display */
+@media (min-width: 768px){
+.header_area .col-lg-3{
+	width:30%;
+	float:left;
+}
+.header_area .col-lg-9{
+	width:70%;
+	float:left;
+}
+.welcome_widgets .col-lg-4, .footer_top_area .col-lg-4{
+	float:left;
+	width:33.3333%;
+}
+#fullwidth_blog .col-lg-4{
+	width:50%;
+}
+.internal_page div.col-lg-8{
+	float:left;
+	width:65%;
+}
+.internal_page div.col-lg-4{
+	float:right;
+	width:35%;
+}
+.blog_content .single_welcome_wid{
+	width:455px;
+}
+.portfolio_list .col-lg-4{
+	float:left;
+	width:49.5%;
+}
+.stick_menu{
+	position:inherit;
+}
+.color_change_function{
+	display:block;
+}
+
+#contact_form textarea{
+	width:405px;
+}
+.content, .sidebar{
+	margin-bottom:30px;
+	margin-top:30px;
+}
+.portfolio_list{
+	margin:30px 0 0px;
+}
+.welcome_widgets{
+	margin-bottom:30px;
+}
+#fullwidth_blog, .blog_content #fullwidth_blog{
+	margin-top:30px;
+}
+.post_navigation{
+	margin-bottom:30px;
+}
+nav#dropdown li a{
+	font-size:13px;
+	letter-spacing:1px;
+	margin-left:0;
+	padding:15px 0 15px 10px;
+}
+nav#dropdown li ul{
+	margin-left:10px;
+	top:30px;
+	width:210px;
+}
+nav#dropdown li ul li:hover ul{
+	left:200px;
+}
+.filter_controls h3 {float:none;text-align:center}
+}
+
+/* This is for desktop display */
+@media (min-width: 992px) and (max-width: 1199px){
+#fullwidth_blog .col-lg-4,  .portfolio_list .col-lg-4{
+	width:33.3333333%;
+}
+.blog_content .single_welcome_wid{
+	width:285px;
+}
+.portfolio_list .col-lg-4{
+	float:left;
+	width:33%;
+}
+.stick_menu{
+	position:fixed;
+}
+.color_change_function{
+	display:block;
+}
+#contact_form textarea{
+	width:550px;
+}
+.content, .sidebar{
+	margin-top:70px;
+	margin-bottom:50px;
+}
+.portfolio_list{
+	margin:80px 0 60px;
+}
+.welcome_widgets{
+	margin-bottom:80px;
+}
+#fullwidth_blog, .blog_content #fullwidth_blog{
+	margin-top:70px;
+}
+.post_navigation{
+	margin-bottom:70px;
+}
+nav#dropdown li a{
+	font-size:14px;
+	padding:15px 0 15px 15px;
+	margin-left:0px;
+	letter-spacing:3px;
+}
+nav#dropdown li ul{
+margin: 0 0 0 25px;
+top:35px;
+width:245px;
+padding:0
+}
+nav#dropdown li ul li:hover ul{
+left:220px;
+}
+.filter_controls h3 {float:left;text-align:left}
+}
+
+/* This is for bigger display */
+@media (min-width: 1200px){
+#fullwidth_blog .col-lg-4,  .portfolio_list .col-lg-4 {width:33.3333333%;
+}
+.blog_content .single_welcome_wid{
+width:350px;
+}
+.stick_menu{
+position:fixed;
+}
+.color_change_function{
+display:block;
+}
+#contact_form textarea{
+width:680px;
+}
+.content, .sidebar{
+margin-top:70px;
+margin-bottom:50px;
+}
+.portfolio_list{
+margin:80px 0 60px;
+}
+.welcome_widgets{
+margin-bottom:80px;
+}
+#fullwidth_blog, .blog_content #fullwidth_blog{
+margin-top:70px;
+}
+.post_navigation{
+margin-bottom:70px;
+}
+nav#dropdown li a{
+font-size:14px;
+padding:15px 0 15px 15px;
+margin-left:10px;
+letter-spacing:3px;
+}
+nav#dropdown li ul{
+margin: 0 0 0 25px;
+padding: 0;
+top: 35px;
+width: 245px;
+}
+nav#dropdown li ul li:hover ul{
+left:220px;
+}
+.filter_controls h3 {float:left;text-align:left}
+}
+
+/* This is for mobile(vertical) display */
+@media (max-width: 767px){
+.logo {margin-bottom:40px;
+text-align:center;
+}
+span.logo_border{
+margin:0 auto 15px;
+}
+.logo p{
+margin:0 auto;
+}
+.follow_links{
+float:none;
+margin:10px auto 20px;
+width:175px;
+}
+.logo{
+margin-bottom:30px;
+}
+.single_welcome_wid{
+margin:2px 2px 25px;
+}
+nav#dropdown{
+text-align:center;
+}
+.portfolio_list .col-lg-4{
+float:left;
+width:100%;
+}
+.stick_menu{
+position:inherit;
+}
+.color_change_function{
+display:none;
+}
+#contact_form textarea, form#searchform input[type="text"]{
+width:100%;
+}
+.content, .sidebar{
+margin-bottom:30px;
+margin-top:30px;
+}
+.portfolio_list{
+margin:30px 0 0px;
+}
+.welcome_widgets{
+margin-bottom:30px;
+}
+#fullwidth_blog, .blog_content #fullwidth_blog{
+margin-top:30px;
+}
+.post_navigation{
+margin-bottom:30px;
+}
+.filter_controls h3 {float:none;text-align:center}
+}
+
+/* This is for mobile(horizontal) display */
+@media screen and (max-width: 400px){
+.portfolio_list .col-lg-4  {float:left;
+width:100%;
+}
+.stick_menu{
+position:inherit;
+}
+.color_change_function{
+display:none;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" class="no-js" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>AliViet - Tạo đơn hàng từ hệ thống website</title>
+    <meta name="description" content="">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="js/rs-plugin/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" data-name="skins">
+    <link rel="stylesheet" href="css/layout/wide.css" data-name="layout">
+    <link rel="stylesheet" type="text/css" href="css/switcher.css" media="screen" />
+    <link rel="stylesheet" href="css/testimonails-slider.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="css/toastr.css">
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/css" src="lib/bootstrap.min.css"></script>
+</head>
+
+<body ng-app="HomeApp">
+
+    <!--Start Header-->
+    <div ng-header></div>
+    <!--End Header-->
+    <!--  Start  make order-->
+    <section class="wrapper">
+        <section class="page_head">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h2>Tạo đơn hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="fuckoff" class="container" data-bind="foreach: orderItems">
+            <div class="row sub_content block-content-order">
+                <div class="carousel-intro">
+                    <div class="col-md-12">
+                        <div class="dividerLatest">
+                            <h4>Đơn Hàng #<span data-bind="text: $index() + 1"></span> </h4>
+                            <div class="gDot"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-sm-2">Link sản phẩm</th>
+                                <th class="col-sm-2">Màu sắc</th>
+                                <th class="col-sm-2">Size</th>
+                                <th class="col-sm-2">Số lượng</th>
+                                <th class="col-sm-2">Giá</th>
+                                <th class="col-sm-2">Ghi chú</th>
+                                <th class="col-sm-1"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="listProduct">
+                            <!-- ko foreach: $data -->
+                            <tr class="product-item">
+                                <td>
+                                    <input class="form-control" data-bind="value: $data.linkSource" placeholder="Nhập link sản phẩm" required="true" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control" data-bind="value: $data.color" placeholder="Màu sắc" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control" data-bind="value: $data.size" placeholder="Nhập size" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control" data-bind="value: $data.quantity" placeholder="Số lượng" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control" data-bind="value: $data.price" placeholder="Nhập giá" type="text">
+                                </td>
+                                <td>
+                                    <textarea class="form-control" data-bind="value: $data.notes" rows="2" placeholder="Ghi chú" type="text"></textarea>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" data-bind="click: $root.removeProduct"><i class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="carousel-intro">
+                    <div class="col-md-12">
+                        <div class="dividerLatest">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="func-btn">
+                    <div class="row container">
+                        <div class="col-xs-12 col-sm-2">
+                            <a class="btn btn-default" data-bind="click: $root.addProduct"><i class="fa fa-plus"></i>Thêm sản phẩm</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <a class="btn btn-success " data-bind="click: $root.addOrder" >
+                                <i class="fa fa-plus"></i> Thêm Shop
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <a class="btn btn-info send-order-btn" data-bind="click: $root.createOrder">
+                                <i class="fa fa-shopping-cart"></i> Gửi đơn hàng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  End make order-->
+    <!--start footer-->
+    <div ng-footer></div>
+    <!--end footer-->
+
+
+
+    <script type="text/javascript" src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/retina-1.1.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <!-- jQuery cookie -->
+    <script type="text/javascript" src="js/styleswitch.js"></script>
+    <!-- Style Colors Switcher -->
+
+
+    <script src="js/jquery.superfish.js"></script>
+    <script src="js/jquery.jpanelmenu.js"></script>
+    <script src="js/jquery.blackandwhite.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="js/swipe.js"></script>
+
+    <script type="text/javascript" src="js/tweetable.jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.timeago.js"></script>
+
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/knockout-2.2.0.js"></script>
+    <script type="text/javascript" src="js/toastr.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/make-order.js"></script>
+
+    <!-- Module -->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!-- Directives -->
+    <script type="text/javascript" src="js/templates/template.js"></script>
+
+    <!--    Subiz Chat-->
+    <!--
+<script type='text/javascript'>
+    window._sbzq || function (e) {
+        e._sbzq = [];
+        var t = e._sbzq;
+        t.push(["_setAccount", 31713]);
+        var n = e.location.protocol == "https:" ? "https:" : "http:";
+        var r = document.createElement("script");
+        r.type = "text/javascript";
+        r.async = true;
+        r.src = n + "//static.subiz.com/public/js/loader.js";
+        var i = document.getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(r, i)
+    }(window);
+</script>-->
+
+    <!--  Facebook Fanpage-->
+
+    <!--
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+-->
+    <script type="text/javascript">
+        var a = 1;
+        var vmWebMakeOrder = new WebMakeOrderViewModel();
+        ko.applyBindings(vmWebMakeOrder, document.getElementById("fuckoff"));
+    </script>
+
+</body>
+
+</html>

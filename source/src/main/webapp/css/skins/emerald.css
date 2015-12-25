@@ -1,0 +1,119 @@
+#current:after, 
+.front_service:hover .icon_service i, 
+.touching.medium a.hover-zoom, 
+.touching.medium a.hover-link, 
+.gDot, 
+.list_style.circle li a i, 
+.flickr-feed li .hover,
+.progress_skill .bar,
+.swipe-navi .swipe-left,
+.swipe-navi .swipe-right,
+.blogPic .blog-hover .icon,
+.list_style.square li a i,
+.highlight.default,
+.pricingTable.business .heading,
+.blog_large .day, .blog_single .day,
+#filter li.selected a:before,
+.carousel-pagination li.active {
+	background: #2ecc71 !important;
+}
+#current, .menu ul li a:hover, .menu ul > li:hover > a {
+	border-bottom: 2px solid #2ecc71;
+	color: #2ecc71;
+}
+a,
+a.read:hover, 
+.recent_posts_list li a:hover,
+.testimonial-review small,
+.active .acc_head, .active .clav_toggle_head,
+.list_style li a:hover,
+#breadcrumbs ul li:last-child a, #breadcrumbs ul li a,
+.menu ul li a:hover .sf-sub-indicator,
+.menu ul ul li a:hover,
+.tp-caption.large_bold_red,
+.blogMeta a:hover, .blogTitle span:hover,
+.service_3_item:hover i,
+.clav_acc_list:hover .acc_head, .clav_list_toggle:hover .clav_toggle_head,
+.dropcap.default,
+.blogTitle > a:hover h2,
+.sidebar_widget ul.archives_list li a:hover, .sidebar_widget ul.arrows_list1 li a:hover i,
+.blog_large .post_meta .metaInfo > span > a:hover, .blog_single .post_meta .metaInfo > span > a:hover,
+#comment-list li .comment-container:hover a,
+#comment-list li .comment-container:hover .comment-date {
+  color: #333 !important;
+}
+
+.testimonial-item blockquote {
+	border-top: 3px solid #2ecc71;
+}
+.testimonial-review > img {
+	border: 2px solid #2ecc71;
+}
+.btn.btn-default,
+.tp-caption.modern_big_redbg,
+.tp-caption.medium_bg_red,
+.dropcap_block.default,
+.btn.btn-default.dark:hover,
+.btn.btn-default.dark:focus,
+.btn-group:focus .btn.btn-default.dark.dropdown-toggle,
+.icon_lists .fa-hover a:hover,
+#site-searchform #searchsubmit,
+.tags li a:hover,
+.shares li a:hover{
+	background-color:#2ecc71;
+}
+
+ul.tabs li.active, ul.tabs li.active a, ul.tabs li.active a:hover {
+    border-top: 1px solid #2ecc71;
+    color: #2ecc71;
+}
+.clav_acc_list.active, .clav_list_toggle.active, 
+.clav_acc_list:hover, .clav_list_toggle:hover {
+    border-top: 1px solid #2ecc71;
+}
+.progress_skill{
+	border: 1px solid #2ecc71;
+}
+.progress_skill:hover .bar,
+.pricingTable.business .pricingTable-header .price-value {
+	background: #27ae60 !important;
+}
+.control-group.focus textarea, .control-group.focus input[type="text"], .control-group.focus input[type="password"], .control-group.focus input[type="datetime"], .control-group.focus input[type="datetime-local"], .control-group.focus input[type="date"], .control-group.focus input[type="month"], .control-group.focus input[type="time"], .control-group.focus input[type="week"], .control-group.focus input[type="number"], .control-group.focus input[type="email"], .control-group.focus input[type="url"], .control-group.focus input[type="search"], .control-group.focus input[type="tel"], .control-group.focus input[type="color"], .control-group.focus .uneditable-input, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus{
+	border-color:#2ecc71;
+}
+
+#current,
+.menu ul li a:hover,
+.menu ul > li:hover > a { 
+	border-bottom: 2px solid #2ecc71;
+	color:#2ecc71;
+}
+
+.menu ul ul {
+	border-top: 2px solid #2ecc71;
+}
+
+.service_2_item:hover i{
+	border-color:#2ecc71;
+	color:#2ecc71;
+}
+blockquote.default{
+	border-color:#2ecc71;
+}
+
+.menu ul ul li a:hover.sf-with-ul:after{
+	border-color: #FBFBFB #FBFBFB #FBFBFB #2ecc71;
+}
+#filter li.selected a, #filter li a:hover,
+#filter li.selected a, #filter li a:hover {
+    border-bottom: 2px solid #2ecc71;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background: none repeat scroll 0 0 #2ecc71;
+    border-color: #2ecc71;
+}
+
+.comment-container:hover {
+	border-color:#2ecc71;
+}
