@@ -12,3 +12,13 @@ app.directive('ngHeader', function(){
     };
 });
 
+
+app.directive('ngFooter', function(){
+
+    return{
+        restrict: 'E',
+        templateUrl:'js/templates/footerBackend.html'
+    };
+
+});
+
