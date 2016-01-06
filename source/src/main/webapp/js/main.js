@@ -296,7 +296,7 @@
                     $('.btntoTop').removeClass('active');
             });
         /*===========================================================*/
-        /*	Preloader 
+        /*	Preloader
         /*===========================================================*/
         //<![CDATA[
         $(window).load(function () { // makes sure the whole site is loaded
@@ -493,19 +493,19 @@
     };
 
     $(document).ready(function () {
-        
 
-        // $("#loginlogout-btn").on("click", function () {
-        //     $(".logmod").show();
-        // });
-        // $(".logmod__close").on("click", function () {
-        //     $(".logmod").hide();
-        // });
+
+         //$("#loginlogout-btn").on("click", function () {
+         //    $(".logmod").show();
+         //});
+         //$(".logmod__close").on("click", function () {
+         //    $(".logmod").hide();
+         //});
     });
 
     var showLogin = function(){
         if (!LoginModalController.isInited) {
-           LoginModalController.initialize(); 
+           LoginModalController.initialize();
         }
         $(".logmod").show();
     };

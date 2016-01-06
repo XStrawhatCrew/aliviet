@@ -6267,5 +6267,24 @@ header.blue-bg .search:focus {
 
 .margin-button{
     margin-bottom: 10px;
+    margin-right:5px;
 }
 
+.button-true{
+    background-color: #ff6c60 !important;
+    border-color: #ff6c60 !important;
+    color: #FFFFFF !important;
+}
+
+
+.button-false{
+    background-color: #bec3c7 !important;
+    border-color: #bec3c7 !important;
+    color: #fff !important;
+}
+
+.button-false-hover:hover{
+    background-color: #ff6c60 !important;
+    border-color: #ff6c60 !important;
+    color: #FFFFFF !important;
+}

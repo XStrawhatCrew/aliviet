@@ -11,7 +11,10 @@
     <meta name="description" content="">
 
     <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/normalize1.css">
     <link rel="stylesheet" href="css/style.css">
+
+
 
     <link rel="stylesheet" href="js/rs-plugin/css/settings.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" data-name="skins">
@@ -20,12 +23,316 @@
     <link rel="stylesheet" href="css/testimonails-slider.css">
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="backend/css/bootstrap-responsive.css">
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script type="text/javascript" src="lib/angular.min.js"></script>
     <script type="text/css" src="lib/bootstrap.min.css"></script>
+
+
+
+
+
+
+
 </head>
 
 <body ng-app="HomeApp">
+
+
+    <!--template-->
+        <!--header template-->
+        <script type="text/ng-template" id="header.html">
+            <!--Start Header-->
+            <header id="header">
+                <section id="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span>Tỷ giá: 3550 Đ/NDT Số dư: 0đ</span>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-2 login-logout-btn">
+                                <a id="loginlogout-btn"  href="#">Đăng nhập/Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Container -->
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo / Mobile Menu -->
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <div id="mobile-navigation">
+                                <a href="#menu" class="menu-trigger">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </div>
+
+                            <div id="logo">
+                                <h1><a href="index.html"><img src="img/logo_min_241x64.png" alt="Clava" /></a></h1>
+                            </div>
+                        </div>
+
+
+                        <!-- Navigation
+                        ================================================== -->
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <nav id="navigation" class="menu">
+                                <ul id="responsive">
+
+                                    <li><a href="index.html" id="current">Trang chủ</a>
+                                    </li>
+
+                                    <li><a href="#">Quy định</a>
+                                    </li>
+
+                                    <li><a href="#">Giới thiệu</a>
+                                    </li>
+
+                                    <li><a href="#">FAQ</a>
+                                    </li>
+
+                                    <li><a href="price.html">Báo giá</a>
+                                    </li>
+
+                                    <li><a href="http://hangcongxuong.com" target="_blank">Hàng công xưởng</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container / End -->
+            </header>
+            <!--End Header-->
+
+        </script>
+
+        <!--login/logout area template-->
+        <script type="text/ng-template" id="loginlogoutarea.html">
+            <div class="logmod" id="loginlogout-area">
+                <div class="logmod__wrapper" style="display:block;">
+                    <span class="logmod__close" onclick="hideLogin()">Đóng</span>
+                    <div class="logmod__container">
+                        <ul class="logmod__tabs">
+                            <li data-tabtar="lgm-2"><a href="#" >Đăng nhập</a></li>
+                            <li data-tabtar="lgm-1"><a href="#">Đăng ký</a></li>
+                        </ul>
+                        <div class="logmod__tab-wrapper">
+                            <div class="logmod__tab lgm-1">
+                                <div class="logmod__heading">
+                                    <span class="logmod__heading-subtitle">Nhập thông tin cá nhân để hoàn thành <strong>đăng ký</strong></span>
+                                </div>
+                                <div class="logmod__form">
+                                    <form accept-charset="utf-8" action="#" class="simform">
+                                        <div class="sminputs">
+                                            <div class="input full">
+                                                <label class="string optional" for="user-name">Email*</label>
+                                                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                            </div>
+                                        </div>
+                                        <div class="sminputs">
+                                            <div class="input full">
+                                                <label class="string optional" for="user-name">Tên đăng nhập*</label>
+                                                <input class="string optional" maxlength="255" id="user-username" placeholder="Tên đăng nhập" type="text" size="50" />
+                                            </div>
+                                        </div>
+                                        <div class="sminputs">
+                                            <div class="input string optional">
+                                                <label class="string optional" for="user-pw">Mật khẩu *</label>
+                                                <input class="string optional" maxlength="255" id="user-pw" placeholder="Mật khẩu" type="password" size="50" />
+                                            </div>
+                                            <div class="input string optional">
+                                                <label class="string optional" for="user-pw-repeat">Nhập lại mật khẩu *</label>
+                                                <input class="string optional" maxlength="255" id="user-pw-repeat" placeholder="Nhập lại mật khẩu" type="password" size="50" />
+                                            </div>
+                                        </div>
+                                        <div class="simform__actions">
+                                            <input class="sumbit" name="commit" type="sumbit" value="Đăng Ký" />
+                                            <span class="simform__actions-sidetext">Tạo tài khoản đồng nghĩa với bạn đã đồng ý với <a class="special" href="#" target="_blank" role="link">Quy định</a></span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="logmod__alter">
+                                    <div class="logmod__alter-container">
+                                        <a href="#" class="connect facebook">
+                                            <div class="connect__icon">
+                                                <i class="fa fa-facebook"></i>
+                                            </div>
+                                            <div class="connect__context">
+                                                <span>Đăng ký với tài khoản <strong>Facebook</strong></span>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="connect googleplus">
+                                            <div class="connect__icon">
+                                                <i class="fa fa-google-plus"></i>
+                                            </div>
+                                            <div class="connect__context">
+                                                <span>Đăng ký với tài khoản <strong>Google+</strong></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="logmod__tab lgm-2">
+                                <div class="logmod__heading">
+                                    <span class="logmod__heading-subtitle">Nhập email và mật khẩu để <strong>đăng nhập</strong></span>
+                                </div>
+                                <div class="logmod__form">
+                                    <form accept-charset="utf-8" action="#" class="simform">
+                                        <div class="sminputs">
+                                            <div class="input full">
+                                                <label class="string optional" for="user-name">Email*</label>
+                                                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                            </div>
+                                        </div>
+                                        <div class="sminputs">
+                                            <div class="input full">
+                                                <label class="string optional" for="user-pw">Mật khẩu *</label>
+                                                <input class="string optional" maxlength="255" id="user-pw" placeholder="Mật khẩu" type="password" size="50" />
+                                                <span class="hide-password">Hiện</span>
+                                            </div>
+                                        </div>
+                                        <div class="simform__actions">
+                                            <input class="sumbit" name="commit" type="sumbit" value="Đăng nhập" />
+                                            <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Quên mật khẩu?<br>Click here</a></span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="logmod__alter">
+                                    <div class="logmod__alter-container">
+                                        <a href="#" class="connect facebook">
+                                            <div class="connect__icon">
+                                                <i class="fa fa-facebook"></i>
+                                            </div>
+                                            <div class="connect__context">
+                                                <span>Đăng nhập với tài khoản <strong>Facebook</strong></span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="connect googleplus">
+                                            <div class="connect__icon">
+                                                <i class="fa fa-google-plus"></i>
+                                            </div>
+                                            <div class="connect__context">
+                                                <span>Đăng nhập với tài khoản <strong>Google+</strong></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </script>
+
+        <!--footer template-->
+        <script type="text/ng-template" id="footer.html">
+
+            <!--start footer-->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <div class="dividerWidget">
+                                <h4>About Us</h4>
+                                <div class="gDot widget"></div>
+                            </div>
+                            <div class="widfoot_content">
+                                <p>Nhiệt tình, chăm chỉ, mến khách</p>
+                                <ul class="contact-details-alt">
+                                    <li><i class="fa fa-map-marker"></i>
+                                        <p><strong>Địa chỉ</strong>: Tầng 2, Số 99 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p>
+                                    </li>
+                                    <li><i class="fa fa-user"></i>
+                                        <p><strong>Phone</strong>: 0987353639 (Ms. Hà)</p>
+                                    </li>
+                                    <li><i class="fa fa-user"></i>
+                                        <p><strong>Phone</strong>: 0989534826 (Mr. Đạt)</p>
+                                    </li>
+                                    <li><i class="fa fa-envelope"></i>
+                                        <p><strong>Email</strong>: <a href="#">admin@alimex.vn</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <div class="dividerWidget">
+                                <h4>Recent Posts</h4>
+                                <div class="gDot widget"></div>
+                            </div>
+                            <div class="widfoot_content">
+                                <ul class="links">
+                                    <li><i class="fa fa-caret-right"></i> <a href="#">Hướng dẫn cách chọn hàng<span>November 07, 2015</span></a></li>
+                                    <li><i class="fa fa-caret-right"></i> <a href="#">Hướng dẫn cách tìm shop xịn <span>November 05, 2015</span></a></li>
+                                    <li><i class="fa fa-caret-right"></i> <a href="#">Thủ thuật chọn hàng <span>November 03, 2015</span></a></li>
+                                    <li><i class="fa fa-caret-right"></i> <a href="#">Tìm nguồn hàng giá tốt <span>November 02, 2015</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <div class="dividerWidget">
+                                <h4>Twitter</h4>
+                                <div class="gDot widget"></div>
+                            </div>
+                            <div class="widfoot_content">
+                                <div class="tweet_go"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <div class="dividerWidget">
+                                <h4>Facebook Page</h4>
+                                <div class="gDot widget"></div>
+                            </div>
+                            <div class="widfoot_content">
+                                <div class="fb-page" data-href="https://www.facebook.com/orderhangaliviet" data-width="210" data-height="215" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                                    <div class="fb-xfbml-parse-ignore">
+                                        <blockquote cite="https://www.facebook.com/orderhangaliviet"><a href="https://www.facebook.com/orderhangaliviet">Dịch vụ Vận chuyển, order hàng Trung Quốc về Việt Nam</a></blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--end footer-->
+
+            <section class="footer_bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <p class="copyright">&copy; Copyright AliViet 2015</a>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="footer_social">
+                                <ul class="footbot_social">
+                                    <li><a class="fb" href="https://www.facebook.com/orderhangaliviet" target="_blank" data-placement="top" data-toggle="tooltip" title="Facbook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="twtr" href="#." data-placement="top" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="rss" href="#." data-placement="top" data-toggle="tooltip" title="RSS"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </script>
+
+    <!--end template-->
+
+
+    <!--Login/Logout Area-->
+
+    <div login-area></div>
+
+
+
+
+
+
     <!-- Preloader -->
     <div id="preloader">
         <div id="status"></div>
@@ -33,10 +340,46 @@
 
     <!--Start Header-->
         <div ng-header> </div>
+
     <!--End Header-->
 
     <!--start wrapper-->
     <section class="wrapper">
+
+        <!--start modal-->
+        <!--<div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >-->
+            <!--<div class="modal-dialog">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                        <!--<h4 class="modal-title">Thông Báo</h4>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+
+                        <!--Kể từ ngày 04/01/2016  với sự hoàn thiện đáng kể về hệ thống vận chuyển, order. Alimex có phân biệt và quy định rõ ràng về hàng order và hàng lấy buôn đối với Quý khách hàng như sau:-->
+                        <!--<br/>-->
+                        <!--+ <span style="color:red;'">Hàng order</span>: Đối với những đơn hàng có tổng trọng lượng < 50kg . Alimex sẽ tính phí vận chuyển TQ-VN như sau:-->
+                        <!--Về kho Hà Nội, Hải Phòng: 30k/ kg và phí dich vụ ( mua hàng và kiểm hàng ) là 3,5% nếu Quý khách đặt hàng qua hệ thống.-->
+                        <!--Về kho Sài Gòn: 42k/1kg và phí dịch vụ (mua hàng và kiểm hàng) là 3,5% nếu Quý khách đặt hàng qua hệ thống.-->
+                        <!--<br/>-->
+                        <!--<br/>-->
+
+                        <!--+ <span style="color:red;'">Hàng buôn</span> : Đối với những đơn hàng có tổng trọng lượng >=50kg. Alimex sẽ tính phí vận chuyển TQ-VN như sau:-->
+                        <!--Về kho Hà Nội, Hải Phòng: 22k/kg và phí đóng bao 60 tệ/1bao( đóng thường) 80 tệ/bao (đóng gỗ)-->
+                        <!--Về kho Sài Gòn, Đà Lạt, Đà Nẵng(Khu vực miền nam): 37k/1kg và phí đóng bao 60 tệ/1bao( đóng thường) 80 tệ/bao (đóng gỗ)-->
+                        <!--Rất mong Quý khách hàng hợp tác để hệ thống order và vận chuyển của chúng tôi ngày càng hoàn thiện và đáp ứng nhu cầu khách hàng tốt hơn!-->
+                        <!--<br/>-->
+                        <!--Trân trọng thông báo!-->
+
+
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
 
         <!--Start Slider-->
         <div id="slider">
@@ -156,6 +499,7 @@
                                     <h4>BƯỚC 1: CHỌN HÀNG</h4>
                                     <p>Chọn hàng trên các trang Taobao.com Alibaba.com Tmall.com 1688.com</p>
                                 </div>
+
                             </div>
                             <div class="col-md-2 col-sm-6 order-step">
                                 <div class="service-item">
@@ -203,9 +547,46 @@
     <!--end wrapper-->
 
     <!--start footer-->
-        <div ng-footer></div>
+    <div ng-footer></div>
     <!--end footer-->
 
+
+
+
+    <a id="btn-show-modal" href="" data-modal="#modal" class="modal__trigger" style="display: none">Modal 1</a>
+
+
+    <!-- Modal -->
+    <div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+        <div class="modal__dialog">
+            <div class="modal__content">
+                <h1>Thông Báo</h1>
+                Kể từ ngày 04/01/2016  với sự hoàn thiện đáng kể về hệ thống vận chuyển, order. Alimex có phân biệt và quy định rõ ràng về hàng order và hàng lấy buôn đối với Quý khách hàng như sau:
+                <br/>
+                + <span style="color:red;'">Hàng order</span>: Đối với những đơn hàng có tổng trọng lượng < 50kg . Alimex sẽ tính phí vận chuyển TQ-VN như sau:
+                Về kho Hà Nội, Hải Phòng: 30k/ kg và phí dich vụ ( mua hàng và kiểm hàng ) là 3,5% nếu Quý khách đặt hàng qua hệ thống.
+                Về kho Sài Gòn: 42k/1kg và phí dịch vụ (mua hàng và kiểm hàng) là 3,5% nếu Quý khách đặt hàng qua hệ thống.
+                <br/>
+                <br/>
+
+                + <span style="color:red;'">Hàng buôn</span> : Đối với những đơn hàng có tổng trọng lượng >=50kg. Alimex sẽ tính phí vận chuyển TQ-VN như sau:
+                Về kho Hà Nội, Hải Phòng: 22k/kg và phí đóng bao 60 tệ/1bao( đóng thường) 80 tệ/bao (đóng gỗ)
+                Về kho Sài Gòn, Đà Lạt, Đà Nẵng(Khu vực miền nam): 37k/1kg và phí đóng bao 60 tệ/1bao( đóng thường) 80 tệ/bao (đóng gỗ)
+                Rất mong Quý khách hàng hợp tác để hệ thống order và vận chuyển của chúng tôi ngày càng hoàn thiện và đáp ứng nhu cầu khách hàng tốt hơn!
+                <br/>
+                Trân trọng thông báo!
+                <!-- modal close button -->
+                <a href="" class="modal__close demo-close">
+                    <svg class="" viewBox="0 0 24 24">
+                        <path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--end modal-->
     
 
 
@@ -239,6 +620,11 @@
     <!-- Directives -->
     <script type="text/javascript" src="js/templates/template.js"></script>
 
+
+    <script type="text/javascript" src="js/modal.js"></script>
+
+
+
     <!-- Start Style Switcher -->
     <div class="switcher"></div>
     <!-- End Style Switcher -->
@@ -271,6 +657,11 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+
+
+
+
+
 </body>
 
 </html>
