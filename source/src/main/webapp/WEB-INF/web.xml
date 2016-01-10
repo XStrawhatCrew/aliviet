@@ -4,12 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>AliViet Order RESTFul API</display-name>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/appservlet/servlet-context.xml</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <servlet-class>
+            org.glassfish.jersey.servlet.ServletContainer
+        </servlet-class>
         <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>vn.aliviet.order.rest</param-value>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>vn.aliviet.order.MyApplication</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

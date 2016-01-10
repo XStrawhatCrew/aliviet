@@ -52,7 +52,7 @@ var WebMakeOrderViewModel = function () {
     self.createOrder = function () {
         var params = {
             'products': self.productItems(),
-            'something': "Cai gi do"
+            'something': "Say something"
         };
         var url = "http://localhost:1412/orderproduct.json";
         $.post(
