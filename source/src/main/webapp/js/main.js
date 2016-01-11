@@ -390,13 +390,6 @@ var LoginModalController = {
 
 $(document).ready(function () {
 
-
-    //$("#loginlogout-btn").on("click", function () {
-    //    $(".logmod").show();
-    //});
-    //$(".logmod__close").on("click", function () {
-    //    $(".logmod").hide();
-    //});
 });
 
 var showLogin = function () {
@@ -408,53 +401,4 @@ var showLogin = function () {
 
 var hideLogin = function () {
     $(".logmod").hide();
-};
-
-var applyJpanelMenu = function () {
-    /*----------------------------------------------------*/
-    /*	Mobile Navigation
-     /*----------------------------------------------------*/
-    var jPanelMenu = {};
-    $(function () {
-        $('pre').each(function (i, e) {
-            hljs.highlightBlock(e)
-        });
-        jPanelMenu = $.jPanelMenu({
-            menu: '#responsive',
-            animated: false,
-            keyboardShortcuts: true
-        });
-        jPanelMenu.on();
-        $(document).on('click', jPanelMenu.menu + ' li a', function (e) {
-            if (jPanelMenu.isOpen() && $(e.target).attr('href').substring(0, 1) == '#') {
-                jPanelMenu.close();
-            }
-        });
-        $(document).on('touchend', '.menu-trigger', function (e) {
-            jPanelMenu.triggerMenu();
-            e.preventDefault();
-            return false;
-        });
-
-        // Removes SuperFish Styles
-        $('#jPanelMenu-menu').removeClass('sf-menu');
-        $('#jPanelMenu-menu li ul').removeAttr('style');
-    });
-
-    $(window).resize(function () {
-        var winWidth = $(window).width();
-        if (winWidth > 767) {
-            jPanelMenu.close();
-            $('.menu-trigger, #logo').show();
-        }
-    });
-
-
-    if ($.fn.cssOriginal != undefined) {
-        $.fn.css = $.fn.cssOriginal;
-    }
-
-    /* ------------------ End Document ------------------ */
-
-    /*----------------------------------------------------*/
 };

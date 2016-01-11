@@ -29,7 +29,7 @@
 <body ng-app="HomeApp" ng-controller="HomeController">
 <div id="menu-left" ng-class="{hideMenu: !showMenu, slideMenu: showMenu}">
     <ul>
-        <li><a href="index.html" id="current">Trang chủ</a>
+        <li><a href="index.html" ng-click="toggleMenu()">Trang chủ</a>
         </li>
 
         <li><a href="#" ng-click="toggleMenu()">Quy định</a>
