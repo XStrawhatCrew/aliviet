@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/layout/wide.css" data-name="layout">
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="css/angular-carousel.css">
 </head>
 
 <body ng-app="HomeApp" ng-controller="HomeController">
@@ -406,9 +407,11 @@
 <script type="text/javascript" src="js/vendor/angular.min.js"></script>
 <script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
 <script type="text/javascript" src="js/vendor/angular-touch.min.js"></script>
+<script type="text/javascript" src="js/vendor/angular-carousel.js"></script>
 <script type="text/javascript" src="js/vendor/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/toastr.js"></script>
+<script type="text/javascript" src="js/vendor/toastr.js"></script>
+<script type="text/javascript" src="js/knockout-2.2.0.js"></script>
 
 <!--jquery plugin-->
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
@@ -417,9 +420,11 @@
 <script type="text/javascript" src="js/jquery.jpanelmenu.js"></script>
 <script type="text/javascript" src="js/jquery.blackandwhite.min.js"></script>
 <script type="text/javascript" src="js/flexslider.js"></script>
+<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
 
 <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
 <script type="text/javascript" src="js/swipe.js"></script>
+<script src="js/make-order.js"></script>
 
 <!--------------- My Scripts ------------------------>
 <!--Core-->
@@ -430,7 +435,7 @@
 <script type="text/javascript" src="js/app.js"></script>
 
 <!-- Directives -->
-<script type="text/javascript" src="js/templates/template.js"></script>
+<script type="text/javascript" src="js/directives/SliderDirective.js"></script>
 
 <!--Controllers-->
 <script type="text/javascript" src="js/controllers/AuthController.js"></script>
@@ -464,6 +469,8 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
 
 
 </body>

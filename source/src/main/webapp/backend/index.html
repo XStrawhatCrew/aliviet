@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 
 <head>
     <meta charset="utf-8">
@@ -28,29 +28,139 @@
     <![endif]-->
     <script type="text/javascript" src="lib/angular.min.js"></script>
 
+    <!-- Include the AngularJS routing library -->
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+
   </head>
 
   <body class="full-width" ng-app="BackendApp">
 
+  <!--template-->
+    <!--header-->
+    <script type="text/ng-template" id="header.html">
+        <header class="header white-bg">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+
+                <!--logo start-->
+                <a href="index.html" class="logo" >Ali<span>mex</span></a>
+                <!--logo end-->
+                <div class="horizontal-menu navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Dashboard</a></li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Vận Hành <b class=" fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a data-toggle="dropdown"  class="dropdown-toggle" href="#">Đơn Hàng & Kiện Hàng</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#/management">Danh sách đơn</a></li>
+                                        <li><a href="#">Vận đơn</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Mua Hàng</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Mua Hàng & Thanh Toán</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Khách Hàng <b class=" fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Người Dùng</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Khiếu Nại <b class=" fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">General</a></li>
+                                <li><a href="#">Buttons</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Tài Chính <b class=" fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">General</a></li>
+                                <li><a href="#">Buttons</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Hệ Thống <b class=" fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">General</a></li>
+                                <li><a href="#">Buttons</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="top-nav ">
+                    <ul class="nav pull-right top-menu">
+                        <li>
+                            <input type="text" class="form-control search" placeholder=" Search">
+                        </li>
+                        <!-- user login dropdown start-->
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <img alt="" src="img/avatar1_small.jpg">
+                                <span class="username">Jhon Doue</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu extended logout">
+                                <div class="log-arrow-up"></div>
+                                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                                <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                        <!-- user login dropdown end -->
+                    </ul>
+                </div>
+
+            </div>
+
+        </header>
+
+    </script>
+
+    <!--footer-->
+    <script type="text/ng-template" id="footer.html">
+        <footer class="site-footer">
+            <div class="text-center">
+                2015 &copy; Alimex.vn
+                <a href="#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+    </script>
+
+
+
+  <!--end template-->
   <section id="container" class="">
       <!--header start-->
-      <ng-header></ng-header>
+      <div ng-header></div>
       <!--header end-->
       <!--sidebar start-->
 
       <!--sidebar end-->
       <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-              <!-- page start-->
-                <h3>Backend !!!</h3>
-
-              <!-- page end-->
-          </section>
-      </section>
+      <ng-view></ng-view>
       <!--main content end-->
       <!--footer start-->
-      <ng-footer></ng-footer>
+      <div ng-footer></div>
       <!--footer end-->
   </section>
 
@@ -74,6 +184,11 @@
 
   <!--Directive-->
     <script type="text/javascript" src="js/templates/template.js"></script>
+
+  <!--Controller-->
+  <script type="text/javascript" src="js/controllers/OrderAttrsCtrl.js"></script>
+
+
   </body>
 
 <!-- Mirrored from thevectorlab.net/flatlab/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Aug 2015 03:43:58 GMT -->
