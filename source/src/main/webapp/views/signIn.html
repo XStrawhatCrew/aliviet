@@ -15,7 +15,7 @@
                             <div class="col col-8">
                                 <label class="input">
                                     <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name1="username" ng-model="loginRequest.username" required>
+                                    <input type="text" name="username" ng-model="loginRequest.username" required>
 
                                     <p class="error-message"
                                        ng-show="userLogin.username.$invalid && (userLogin.username.$touched || userLogin.$submitted)">
@@ -58,7 +58,6 @@
                 </fieldset>
                 <div>
                     <button type="submit" class="button btn btn-default">Đăng nhập</button>
-                    <a href="#/signUp" class="button btn btn-info button-secondary">Đăng ký</a>
                 </div>
             </form>
         </div>

@@ -12,11 +12,13 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
         "password": ""
     };
 
-    $scope.createRequest = {
-        "username": "",
-        "email": "",
-        "password": "",
-        "re_password": ""
+    $scope.createUserRequest = {
+        "user": {
+            "username": "",
+            "email": "",
+            "fullName": ""
+        },
+        "password": ""
     };
 
     $scope.doSignIn = function (isValid) {

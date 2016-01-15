@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="divH20"></div>
 
-</body>
-</html>
+<div class="body body-s container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-xs-12">
+            <form ng-submit="doSignUp(userSignUp.$isValid)" name="userSignUp" id="sky-form" class="sky-form" novalidate>
+                <header>Đăng ký tài khoản</header>
+
+                <fieldset>
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Tên đăng nhập</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="username" ng-model="createUserRequest.username" ng-pattern="/^[A-Za-z0-9_]+$/" ng-minlength="3" ng-maxlength="20" ng-required="true">
+                                    <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới; từ 3-20 ký tự</b>
+                                    <p class="error-message"
+                                       ng-show="userSignUp.username.$error.required && (userSignUp.username.$touched || userSignUp.$submitted)">
+                                        Tên đăng nhập không được để trống</p>
+                                    <p class="error-message"
+                                       ng-show="userSignUp.username.$error.minlength && (userSignUp.username.$touched || userSignUp.$submitted)">
+                                        Tên đăng nhập ít nhất 3 ký tự</p>
+                                    <p class="error-message"
+                                       ng-show="userSignUp.username.$error.maxlength && (userSignUp.username.$touched || userSignUp.$submitted)">
+                                        Tên đăng nhập tối đa 20 ký tự</p>
+                                    <p class="error-message"
+                                       ng-show="userSignUp.username.$error.pattern && (userSignUp.username.$touched || userSignUp.$submitted)">
+                                        Chỉ chấp nhận chữ cái, số, hoặc gạch dưới</p>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Mật khẩu</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="password" name="password" ng-model="loginRequest.password" ng-pattern="/^[a-z]+9$/"  required>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.password.$invalid && (userSignUp.password.$touched || userSignUp.$submitted)">
+                                        Mật khẩu
+                                        không được để trống</p>
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <div class="col col-4"></div>
+                            <div class="col col-8">
+                                <label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Ghi nhớ
+                                    đăng
+                                    nhập</label>
+                            </div>
+                        </div>
+                    </section>
+                </fieldset>
+                <div>
+                    <button type="submit" class="button btn btn-default">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="divH20"></div>
