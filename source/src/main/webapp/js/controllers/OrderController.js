@@ -26,7 +26,7 @@ app.controller('OrderController', ['$scope', function ($scope) {
         if($scope.orderForm.$valid){
             console.log(orders);
         }else{
-            toastr.error("Vui lòng điền đầy đủ đơn còn thiếu !");
+            toastr.error("Vui lòng điền đầy đủ những đơn còn trống !");
         }
 
     };
