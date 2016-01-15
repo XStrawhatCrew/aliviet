@@ -17,8 +17,18 @@ app.controller('OrderController', ['$scope', function ($scope) {
         return obj;
     };
 
-    $scope.createOrder = function (order) {
+    $scope.createOrder = function (isvalid,order) {
+        if(!isvalid) return;
         console.log(order);
+    };
+
+    $scope.createOrders = function (orders) {
+        if($scope.orderForm.$valid){
+            console.log(orders);
+        }else{
+            toastr.error("Vui lòng điền đầy đủ đơn còn thiếu !");
+        }
+
     };
 
 
