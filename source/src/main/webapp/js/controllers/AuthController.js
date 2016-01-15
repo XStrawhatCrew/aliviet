@@ -1,7 +1,12 @@
 /**
  * Created by windluffy on 06/01/2016.
  */
-app.controller('AuthController', ['$scope', function ($scope) {
+app.controller('AuthController', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
+    console.log($rootScope.isLoggedIn);
+    if ($rootScope.isLoggedIn) {
+        $location.path("/");
+    }
+
     $scope.loginRequest = {
         "username": "",
         "password": ""
@@ -14,17 +19,23 @@ app.controller('AuthController', ['$scope', function ($scope) {
         "re_password": ""
     };
 
-    $scope.doSignIn = function () {
-        console.log("loginClicked");
+    $scope.doSignIn = function (isValid) {
+        if (!isValid) return;
+
+        console.log("OK");
         restBase.user.login(
             $scope.loginRequest.username,
             $scope.loginRequest.password,
             function () {
-                $("#divAuthOrUser").html('<a id="loginlogout-btn"  href="#">' + $scope.loginRequest.username + '</a>');
+                $rootScope.isLoggedIn = true;
+                $scope.$apply(function () {
+                    $location.path("/");
+                });
             },
             function (jqXHR, textStatus) {
-                toastr.error("Tên đăng nhập hoặc mật khảu không đúng!", "Lỗi đăng nhập");
-            });
+                toastr.error("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập");
+            }
+        );
     };
 
     $scope.doSignUp = function () {

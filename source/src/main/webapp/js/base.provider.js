@@ -27,7 +27,7 @@ restBase.cookie.get = function (name) {
     var cookie = {};
     for (var i in pairs) {
         var parts = pairs[i].split("=");
-        cookie[parts[0]] = parts[1];
+        cookie[parts[0].trim()] = parts[1].trim();
     }
     return cookie[name];
 };
@@ -220,5 +220,25 @@ restBase.user.login = function (username, password, success, fail) {
             }
         })
 
+};
+
+/***
+ * Check the user has Logged in;
+ * @returns {boolean}
+ */
+restBase.user.isLoggedIn = function() {
+    if(restBase.cookie.get('username')) {
+        return true;
+    }
+    return false;
+};
+
+/***
+ * Do logout the user
+ */
+restBase.user.logout = function () {
+    restBase.cookie.remove('token');
+    restBase.cookie.remove('userId');
+    restBase.cookie.remove('username');
 };
 /* **************** End User Resource **************** */

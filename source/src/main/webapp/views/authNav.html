@@ -1,0 +1,10 @@
+<div class="col-md-2 login-logout-btn col-xs-6" ng-show="!isLoggedIn">
+    <a href="#/signIn">Đăng nhập</a>
+    <span> | </span>
+    <a href="#/signUp">Đăng ký</a>
+</div>
+<div class="col-md-2 login-logout-btn col-xs-6" ng-show="isLoggedIn">
+    <a href="#/user">{{username}}</a>
+    <span> | </span>
+    <a href="javascript:void(0)" ng-click="signOut()">Thoát</a>
+</div>

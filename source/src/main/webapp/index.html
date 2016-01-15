@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/style_login.css">
     <link rel="stylesheet" href="css/angular-carousel.css">
+    <link rel="stylesheet" href="css/sky-forms.css">
 </head>
 
 <body ng-app="HomeApp" ng-controller="HomeController">
@@ -55,13 +56,13 @@
         <section id="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-xs-6">
                         <span>Tỷ giá: 3550 Đ/NDT Số dư: 0đ</span>
                     </div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-2 login-logout-btn" id="divAuthOrUser">
-                        <a id="loginlogout-btn" href="#">Đăng nhập/Đăng ký</a>
+                    <div class="col-md-6">
                     </div>
+                    <!--Login/Logout-->
+                    <auth-nav ui-if="isLoggedIn()" is-logged-in="isLoggedIn()"></auth-nav>
                 </div>
             </div>
         </section>
@@ -112,138 +113,6 @@
         <!-- Container / End -->
     </header>
     <!--End Header-->
-
-    <!--login/logout area -->
-    <div class="logmod" id="loginlogout-area" ng-controller="AuthController">
-        <div class="logmod__wrapper" style="display:block;">
-            <span class="logmod__close" onclick="hideLogin()">Đóng</span>
-
-            <div class="logmod__container">
-                <ul class="logmod__tabs">
-                    <li data-tabtar="lgm-2"><a href="#">Đăng nhập</a></li>
-                    <li data-tabtar="lgm-1"><a href="#">Đăng ký</a></li>
-                </ul>
-                <div class="logmod__tab-wrapper">
-                    <div class="logmod__tab lgm-1">
-                        <div class="logmod__heading">
-                        <span class="logmod__heading-subtitle">Nhập thông tin cá nhân để hoàn thành <strong>đăng
-                            ký</strong></span>
-                        </div>
-                        <div class="logmod__form">
-                            <form accept-charset="utf-8" action="#" class="simform">
-                                <div class="sminputs">
-                                    <div class="input full">
-                                        <label class="string optional" for="user-name">Email*</label>
-                                        <input class="string optional" maxlength="255" id="user-name"
-                                               placeholder="Email"
-                                               type="email" size="50"/>
-                                    </div>
-                                </div>
-                                <div class="sminputs">
-                                    <div class="input full">
-                                        <label class="string optional" for="user-username">Tên đăng nhập*</label>
-                                        <input class="string optional" maxlength="255" id="user-username"
-                                               placeholder="Tên đăng nhập" type="text" size="50"/>
-                                    </div>
-                                </div>
-                                <div class="sminputs">
-                                    <div class="input string optional">
-                                        <label class="string optional" for="user-pw1">Mật khẩu *</label>
-                                        <input class="string optional" maxlength="255" id="user-pw1"
-                                               placeholder="Mật khẩu"
-                                               type="password" size="50"/>
-                                    </div>
-                                    <div class="input string optional">
-                                        <label class="string optional" for="user-pw-repeat">Nhập lại mật khẩu *</label>
-                                        <input class="string optional" maxlength="255" id="user-pw-repeat"
-                                               placeholder="Nhập lại mật khẩu" type="password" size="50"/>
-                                    </div>
-                                </div>
-                                <div class="simform__actions">
-                                    <input class="sumbit" name="commit" type="sumbit" value="Đăng Ký"/>
-                                <span class="simform__actions-sidetext">Tạo tài khoản đồng nghĩa với bạn đã đồng ý với <a
-                                        class="special" href="#" target="_blank" role="link">Quy định</a></span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="logmod__alter">
-                            <div class="logmod__alter-container">
-                                <a href="#" class="connect facebook">
-                                    <div class="connect__icon">
-                                        <i class="fa fa-facebook"></i>
-                                    </div>
-                                    <div class="connect__context">
-                                        <span>Đăng ký với tài khoản <strong>Facebook</strong></span>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="connect googleplus">
-                                    <div class="connect__icon">
-                                        <i class="fa fa-google-plus"></i>
-                                    </div>
-                                    <div class="connect__context">
-                                        <span>Đăng ký với tài khoản <strong>Google+</strong></span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="logmod__tab lgm-2">
-                        <div class="logmod__heading">
-                        <span class="logmod__heading-subtitle">Nhập email và mật khẩu để <strong>đăng
-                            nhập</strong></span>
-                        </div>
-                        <div class="logmod__form">
-                            <form accept-charset="utf-8" action="#" class="simform">
-                                <div class="sminputs">
-                                    <div class="input full">
-                                        <label class="string optional" for="user-name">Email*</label>
-                                        <input class="string optional" maxlength="255" id="user-email"
-                                               placeholder="Email"
-                                               type="text" size="50" value="{{loginRequest.username}}"/>
-                                    </div>
-                                </div>
-                                <div class="sminputs">
-                                    <div class="input full">
-                                        <label class="string optional" for="user-pw">Mật khẩu *</label>
-                                        <input class="string optional" maxlength="255" id="user-pw"
-                                               placeholder="Mật khẩu"
-                                               type="password" size="50" value="{{loginRequest.password}}"/>
-                                        <span class="hide-password">Hiện</span>
-                                    </div>
-                                </div>
-                                <div class="simform__actions">
-                                    <button class="sumbit" ng-click="doSignIn()">Đăng nhập</button>
-                                <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Quên mật
-                                    khẩu?<br>Click here</a></span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="logmod__alter">
-                            <div class="logmod__alter-container">
-                                <a href="#" class="connect facebook">
-                                    <div class="connect__icon">
-                                        <i class="fa fa-facebook"></i>
-                                    </div>
-                                    <div class="connect__context">
-                                        <span>Đăng nhập với tài khoản <strong>Facebook</strong></span>
-                                    </div>
-                                </a>
-                                <a href="#" class="connect googleplus">
-                                    <div class="connect__icon">
-                                        <i class="fa fa-google-plus"></i>
-                                    </div>
-                                    <div class="connect__context">
-                                        <span>Đăng nhập với tài khoản <strong>Google+</strong></span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--start wrapper-->
     <section class="wrapper" ng-view>
@@ -360,48 +229,7 @@
     </section>
     <!--end footer-->
 </div>
-
-
-<a id="btn-show-modal" href="" data-modal="#modal" class="modal__trigger" style="display: none">Modal 1</a>
-<!-- Modal -->
-<div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
-    <div class="modal__dialog">
-        <div class="modal__content">
-            <h1>Thông Báo</h1>
-            Kể từ ngày 04/01/2016 với sự hoàn thiện đáng kể về hệ thống vận chuyển, order. Alimex có phân biệt và quy
-            định rõ ràng về hàng order và hàng lấy buôn đối với Quý khách hàng như sau:
-            <br/>
-            + <span style="color:red;'">Hàng order</span>: Đối với những đơn hàng có tổng trọng lượng < 50kg . Alimex sẽ
-            tính phí vận chuyển TQ-VN như sau:
-            Về kho Hà Nội, Hải Phòng: 30k/ kg và phí dich vụ ( mua hàng và kiểm hàng ) là 3,5% nếu Quý khách đặt hàng
-            qua hệ thống.
-            Về kho Sài Gòn: 42k/1kg và phí dịch vụ (mua hàng và kiểm hàng) là 3,5% nếu Quý khách đặt hàng qua hệ thống.
-            <br/>
-            <br/>
-
-            + <span style="color:red;'">Hàng buôn</span> : Đối với những đơn hàng có tổng trọng lượng >=50kg. Alimex sẽ
-            tính phí vận chuyển TQ-VN như sau:
-            Về kho Hà Nội, Hải Phòng: 22k/kg và phí đóng bao 60 tệ/1bao( đóng thường) 80 tệ/bao (đóng gỗ)
-            Về kho Sài Gòn, Đà Lạt, Đà Nẵng(Khu vực miền nam): 37k/1kg và phí đóng bao 60 tệ/1bao( đóng thường) 80
-            tệ/bao (đóng gỗ)
-            Rất mong Quý khách hàng hợp tác để hệ thống order và vận chuyển của chúng tôi ngày càng hoàn thiện và đáp
-            ứng nhu cầu khách hàng tốt hơn!
-            <br/>
-            Trân trọng thông báo!
-            <!-- modal close button -->
-            <a href="" class="modal__close demo-close">
-                <svg class="" viewBox="0 0 24 24">
-                    <path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/>
-                    <path d="M0 0h24v24h-24z" fill="none"/>
-                </svg>
-            </a>
-
-        </div>
-    </div>
-</div>
-
-<!--end modal-->
-
+<div id="fb-root"></div>
 <!--vendor js-->
 <script type="text/javascript" src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="js/vendor/angular.min.js"></script>
@@ -420,12 +248,11 @@
 <script type="text/javascript" src="js/jquery.jpanelmenu.js"></script>
 <script type="text/javascript" src="js/jquery.blackandwhite.min.js"></script>
 <script type="text/javascript" src="js/flexslider.js"></script>
-<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
+<!--<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>-->
 
 <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
 <script type="text/javascript" src="js/swipe.js"></script>
-<script src="js/make-order.js"></script>
-
+<script type="text/javascript" src="js/social.js"></script>
 <!--------------- My Scripts ------------------------>
 <!--Core-->
 <script src="js/main.js"></script>
@@ -436,41 +263,11 @@
 
 <!-- Directives -->
 <script type="text/javascript" src="js/directives/SliderDirective.js"></script>
+<script type="text/javascript" src="js/directives/AuthNavDirective.js"></script>
 
 <!--Controllers-->
 <script type="text/javascript" src="js/controllers/AuthController.js"></script>
 <script type="text/javascript" src="js/controllers/HomeController.js"></script>
-
-<!--    Subiz Chat-->
-<script type='text/javascript'>
-    window._sbzq || function (e) {
-        e._sbzq = [];
-        var t = e._sbzq;
-        t.push(["_setAccount", 31713]);
-        var n = e.location.protocol == "https:" ? "https:" : "http:";
-        var r = document.createElement("script");
-        r.type = "text/javascript";
-        r.async = true;
-        r.src = n + "//static.subiz.com/public/js/loader.js";
-        var i = document.getElementsByTagName("script")[0];
-        i.parentNode.insertBefore(r, i)
-    }(window);
-</script>
-
-<!--  Facebook Fanpage-->
-<div id="fb-root"></div>
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-
 
 
 </body>
