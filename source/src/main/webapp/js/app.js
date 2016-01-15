@@ -9,8 +9,8 @@ app.config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/create-orders',{
-            controller: 'OrdersController',
+        .when('/create-orders', {
+            controller: 'OrderController',
             templateUrl: 'views/createOrders.html'
         })
         .when('/signIn', {

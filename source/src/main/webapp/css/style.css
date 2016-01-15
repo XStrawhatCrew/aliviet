@@ -5992,6 +5992,12 @@ SIDE BAR ARCHIVE LIST
     margin-top: 10px;
 }
 
+
+.error-msg{
+    color: red;
+    font-size:12px;
+}
+
 /* make order website */
 
 /* end make order website */
