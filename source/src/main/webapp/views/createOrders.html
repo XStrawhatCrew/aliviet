@@ -8,12 +8,12 @@
     </div>
 </section>
 
-<div id="fuckoff" class="container" data-bind="foreach: orderItems">
-    <div class="row sub_content block-content-order">
-        <div class="carousel-intro">
+<div  class="container">
+    <div class="row sub_content block-content-order" ng-repeat="order in orders" ng-form="validateProduct" >
+        <div class="carousel-intro" >
             <div class="col-md-12">
                 <div class="dividerLatest">
-                    <h4>Đơn Hàng #<span data-bind="text: $index() + 1"></span></h4>
+                    <h4>Đơn Hàng #<span>{{ $index +1}}</span></h4>
 
                     <div class="gDot"></div>
                 </div>
@@ -25,8 +25,8 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th class="col-sm-2">Link sản phẩm</th>
-                        <th class="col-sm-2">Màu sắc</th>
+                        <th class="col-sm-3">Link sản phẩm</th>
+                        <th class="col-sm-1">Màu sắc</th>
                         <th class="col-sm-2">Size</th>
                         <th class="col-sm-2">Số lượng</th>
                         <th class="col-sm-2">Giá</th>
@@ -35,39 +35,42 @@
                     </tr>
                     </thead>
                     <tbody class="listProduct">
-                    <!-- ko foreach: $data -->
-                    <tr class="product-item">
+                    <tr class="product-item" ng-repeat="product in order"  >
                         <td>
-                            <input class="form-control" data-bind="value: $data.linkSource"
-                                   placeholder="Nhập link sản phẩm" required="true" type="text">
+                            <input class="form-control "
+                                   placeholder="Nhập link sản phẩm" name="link_{{$index}}"  ng-model="product.linkSource" type="url" required>
+                            <span class="error-msg"
+                                  ng-show="validateProduct.link_{{$index}}.$error.required && (validateProduct.link_{{$index}}.$touched || validateProduct.$submitted)
+                                   ">Link không được bỏ trống.</span>
+                            <span class="error-msg" ng-show="validateProduct.link_{{$index}}.$error.url && (validateProduct.link_{{$index}}.$touched || validateProduct.$submitted)"
+                                    >Link không hợp lệ.</span>
+
                         </td>
                         <td>
-                            <input class="form-control" data-bind="value: $data.color" placeholder="Màu sắc"
+                            <input class="form-control"  placeholder="Màu sắc" ng-model="product.color"
                                    type="text">
                         </td>
                         <td>
-                            <input class="form-control" data-bind="value: $data.size" placeholder="Nhập size"
+                            <input class="form-control"  placeholder="Nhập size" ng-model="product.size"
                                    type="text">
                         </td>
                         <td>
-                            <input class="form-control" data-bind="value: $data.quantity" placeholder="Số lượng"
+                            <input class="form-control"  placeholder="Số lượng" ng-model="product.quantity"
                                    type="text">
                         </td>
                         <td>
-                            <input class="form-control" data-bind="value: $data.price" placeholder="Nhập giá"
+                            <input class="form-control"  placeholder="Nhập giá" ng-model="product.price"
                                    type="text">
                         </td>
                         <td>
-                            <textarea class="form-control" data-bind="value: $data.notes" rows="2" placeholder="Ghi chú"
+                            <textarea class="form-control"  rows="2" placeholder="Ghi chú" ng-model="product.notes"
                                       type="text"></textarea>
                         </td>
                         <td>
-                            <a class="btn btn-danger"
-                               data-bind="click: function(data, event) { $root.removeProduct($index, data, event, $parentContext.$index);}"><i
-                                    class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
+                            <a class="btn btn-danger" ng-click="removeProduct(order, $index, $parent.$index)">
+                                <i class="fa fa-trash-o" title="Xoá sản phẩm"></i></a>
                         </td>
                     </tr>
-                    <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -83,27 +86,28 @@
             <div class="row container">
                 <div class="col-xs-12 col-sm-2">
                     <a class="btn btn-default"
-                       data-bind="click: function(data, event) { $root.addProduct($index, data, event); }"><i
-                            class="fa fa-plus"></i>Thêm sản phẩm</a>
+                       name="buttonAddProduct"
+                       ng-click="addProduct(validateProduct.$valid, order); validateProduct.$setSubmitted();">
+                        <i class="fa fa-plus"></i>Thêm sản phẩm</a>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <a class="btn btn-success " data-bind="click: $root.addOrder">
+                    <a class="btn btn-success " ng-click="addOrder()">
                         <i class="fa fa-plus"></i> Thêm Shop
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <a class="btn btn-info send-order-btn" data-bind="click: $root.createOrder">
-                        <i class="fa fa-shopping-cart"></i> Gửi đơn hàng
+                    <a class="btn btn-info send-order-btn" ng-click="createOrder(order)">
+                        <i class="fa fa-shopping-cart" ></i> Gửi đơn hàng
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-6">
+        <a class="btn btn-info send-order-btn" ng-click="createOrder(order)">
+            <i class="fa fa-shopping-cart" ></i> Kết Đơn
+        </a>
+    </div>
 </div>
 
-
-<script type="text/javascript">
-    var a = 1;
-    var vmWebMakeOrder = new WebMakeOrderViewModel();
-    ko.applyBindings(vmWebMakeOrder, document.getElementById("fuckoff"));
-</script>

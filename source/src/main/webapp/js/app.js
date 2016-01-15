@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', [ 'ngRoute', 'ngTouch']);
+var app = angular.module('HomeApp', ['ngRoute', 'ngTouch']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -6,7 +6,8 @@ app.config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/create-orders',{
+        .when('/create-orders', {
+            controller: 'OrderController',
             templateUrl: 'views/createOrders.html'
         })
         .otherwise({
