@@ -1,73 +1,68 @@
-<section>
-    <div class="container">
-        <div class="row sub_content">
-            <div class="carousel-intro">
-                <div class="col-md-12">
-                    <div class="dividerLatest">
-                        <h4>Đăng nhập hệ thống</h4>
+<div class="divH20"></div>
 
-                        <div class="gDot"></div>
-                    </div>
-                    <div class="clearfix"></div>
+<div class="body body-s container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-xs-12">
+            <form ng-submit="doSignIn(userLogin.$valid)" name="userLogin" id="sky-form" class="sky-form" novalidate>
+                <header>Đăng nhập hệ thống</header>
+
+                <fieldset>
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">E-mail hoặc tên đăng nhập</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name1="username" ng-model="loginRequest.username" required>
+
+                                    <p class="error-message"
+                                       ng-show="userLogin.username.$invalid && (userLogin.username.$touched || userLogin.$submitted)">
+                                        Email và tên đăng nhập không được để trống</p>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Mật khẩu</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="password" name="password" ng-model="loginRequest.password" required>
+
+                                    <p class="error-message"
+                                       ng-show="userLogin.password.$invalid && (userLogin.password.$touched || userLogin.$submitted)">
+                                        Mật khẩu
+                                        không được để trống</p>
+                                </label>
+
+                                <div class="note"><a href="#sky-form2" class="modal-opener">Quên mật khẩu?</a></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <div class="col col-4"></div>
+                            <div class="col col-8">
+                                <label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Ghi nhớ
+                                    đăng
+                                    nhập</label>
+                            </div>
+                        </div>
+                    </section>
+                </fieldset>
+                <div>
+                    <button type="submit" class="button btn btn-default">Đăng nhập</button>
+                    <a href="#/signUp" class="button btn btn-info button-secondary">Đăng ký</a>
                 </div>
-            </div>
-
-            <div class="container">
-                <div class="row sub_content">
-                    <div class="rs_box">
-                        <div class="col-sm-4 col-md-4 col-lg-4">
-                            <div class="front_service">
-                                <div class="icon_service">
-                                    <i class="fa fa-globe"></i>
-
-                                    <h3>Tạo từ website</h3>
-                                </div>
-                                <div class="fr_content">
-                                    <p>Tạo đơn hàng trực tiếp từ hệ thống</p>
-                                    <br/>
-                                    <a class="btn btn-large btn-default" href="make_order.html">
-                                        <i class="fa fa-globe"></i> Khởi tạo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-4">
-                            <div class="front_service">
-                                <div class="icon_service">
-                                    <i class="fa fa-file-text-o"></i>
-
-                                    <h3>Tạo bằng Excel</h3>
-                                </div>
-                                <div class="fr_content">
-                                    <p>Sử dụng mẫu Excel để tạo đơn hàng</p>
-                                    <br/>
-                                    <a class="btn btn-large btn-default" href="#fakelink">
-                                        <i class="fa fa-file-text-o"></i> Khởi tạo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-4">
-                            <div class="front_service">
-                                <div class="icon_service">
-                                    <i class="fa fa-download"></i>
-
-                                    <h3>Tạo bằng công cụ</h3>
-                                </div>
-                                <div class="fr_content">
-                                    <p>Sử dụng Extension trên Google Chrome hoặc Addon trên Firefox</p>
-                                    <a class="btn btn-large btn-default" href="#fakelink">
-                                        <i class="fa fa-download"></i> Tải công cụ
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
+        <div class="col-md-2"></div>
     </div>
-</section>
+</div>
+<div class="divH20"></div>

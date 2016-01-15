@@ -2,10 +2,11 @@
  * Created by windluffy on 10/01/2016.
  */
 
-app.controller('HomeController', ['$scope', '$swipe', function ($scope, $swipe) {
-    $scope.$on('$viewContentLoaded', function (ele) {
+app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    $scope.isLoggedIn = function() {
+        return $rootScope.isLoggedIn;
+    };
 
-    });
     $scope.showMenu = false;
 
     $scope.toggleMenu = function () {
