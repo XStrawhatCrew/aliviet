@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', [ 'ngRoute', 'ngTouch'])
+var app = angular.module('HomeApp', ['ngRoute', 'ngTouch'])
     .run(function ($rootScope) {
         $rootScope.isLoggedIn = restBase.user.isLoggedIn();
     });

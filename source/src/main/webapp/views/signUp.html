@@ -15,20 +15,56 @@
                             <div class="col col-8">
                                 <label class="input">
                                     <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="username" ng-model="createUserRequest.username" ng-pattern="/^[A-Za-z0-9_]+$/" ng-minlength="3" ng-maxlength="20" ng-required="true">
-                                    <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới; từ 3-20 ký tự</b>
+                                    <input type="text" name="username" ng-model="createUserRequest.user.username"
+                                           ng-pattern="/^[A-Za-z0-9_]+$/" ng-minlength="3" ng-maxlength="20"
+                                           ng-required="true">
+                                    <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới, từ 3-20
+                                        ký tự</b>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.username.$error.required && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập không được để trống</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.username.$error.minlength && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập ít nhất 3 ký tự</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.username.$error.maxlength && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập tối đa 20 ký tự</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.username.$error.pattern && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Chỉ chấp nhận chữ cái, số, hoặc gạch dưới</p>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Họ và Tên</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="fullName" ng-model="createUserRequest.user.fullName"
+                                           ng-pattern="/^[A-Za-z]+$/" ng-minlength="2" ng-required="true">
+                                    <b class="tooltip tooltip-bottom-right">Họ Tên không chứa kí tự đặc biệt và phải lớn
+                                        hơn 2 kí tự</b>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.fullName.$error.required && (userSignUp.fullName.$touched || userSignUp.$submitted)">
+                                        Họ Tên không được để trống</p>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.fullName.$error.pattern && (userSignUp.fullName.$touched || userSignUp.$submitted)">
+                                        Họ Tên không chứa các ký tự đặc biệt và số</p>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.fullName.$error.minlength && (userSignUp.fullName.$touched || userSignUp.$submitted)">
+                                        Họ Tên phải lớn hơn 2 kí tự</p>
+
                                 </label>
                             </div>
                         </div>
@@ -41,12 +77,96 @@
                             <div class="col col-8">
                                 <label class="input">
                                     <i class="icon-append fa fa-lock"></i>
-                                    <input type="password" name="password" ng-model="loginRequest.password" ng-pattern="/^[a-z]+9$/"  required>
+                                    <input type="password" name="password" ng-model="createUserRequest.password"
+                                           ng-pattern="/^[a-z]+9$/"
+                                           ng-required="true">
 
                                     <p class="error-message"
-                                       ng-show="userSignUp.password.$invalid && (userSignUp.password.$touched || userSignUp.$submitted)">
+                                       ng-show="userSignUp.password.$error.required && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         không được để trống</p>
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Nhập lại mật khẩu</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="password" name="confirmPassword"
+                                           ng-model="createUserRequest.confirmPassword" ng-pattern="/^[a-z]+9$/"
+                                           ng-required="true"
+                                           compare-to="createUserRequest.password">
+                                    <b class="tooltip tooltip-bottom-right">Mật khẩu phải giống ở trên</b>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.confirmPassword.$error.required && (userSignUp.confirmPassword.$touched || userSignUp.$submitted)">
+                                        Mật khẩu
+                                        không được để trống</p>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.confirmPassword.$error && ( userSignUp.confirmPassword.$touched || userSignUp.$submitted)">
+                                        Mật khẩu
+                                        phải giống nhau
+                                    </p>
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Email</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="text" name="email" ng-model="createUserRequest.user.email"
+                                           ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-required="true">
+                                    <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới</b>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.email.$error.required && (userSignUp.email.$touched || userSignUp.$submitted)">
+                                        Email
+                                        không được để trống</p>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.email.$error.pattern && (userSignUp.email.$touched || userSignUp.$submitted)">
+                                        Email sai định dạng</p>
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Số điện thoại</label>
+
+                            <div class="col col-8">
+                                <label class="input">
+                                    <i class="icon-append fa fa-lock"></i>
+                                    <input type="text" name="phoneNumber" ng-model="createUserRequest.user.phoneNumber"
+                                           ng-pattern="/^[0-9]+$/" required>
+                                    <b class="tooltip tooltip-bottom-right">Số điện thoại phải là số</b>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.phoneNumber.$error.required && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
+                                        Số điện thoại không được để trống</p>
+
+                                    <p class="error-message"
+                                       ng-show="userSignUp.phoneNumber.$error.pattern && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
+                                        Số điện thoại phải là số</p>
                                 </label>
 
 
@@ -64,6 +184,8 @@
                             </div>
                         </div>
                     </section>
+
+
                 </fieldset>
                 <div>
                     <button type="submit" class="button btn btn-default">Đăng ký</button>
