@@ -2,8 +2,17 @@
  * Created by tinblanc on 1/12/16.
  */
 
-app.controller('OrderController', ['$scope', function ($scope) {
+app.controller('OrderController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.orders = [];
+    $scope.isCollapsed = false;
+
+
+
+
+
+
+
+
 
     $scope.makeANewProductObj = function () {
         var obj = new Object();
@@ -25,6 +34,8 @@ app.controller('OrderController', ['$scope', function ($scope) {
     $scope.createOrders = function (orders) {
         if($scope.orderForm.$valid){
             console.log(orders);
+            $rootScope.orders = orders;
+
         }else{
             toastr.error("Vui lòng điền đầy đủ những đơn còn trống !");
         }

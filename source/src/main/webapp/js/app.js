@@ -1,6 +1,7 @@
 var app = angular.module('HomeApp', [ 'ngRoute', 'ngTouch'])
     .run(function ($rootScope) {
         $rootScope.isLoggedIn = restBase.user.isLoggedIn();
+        $rootScope.orders = [];
     });
 
 app.config(function ($routeProvider) {
@@ -20,6 +21,10 @@ app.config(function ($routeProvider) {
         .when('/signUp', {
             controller: 'AuthController',
             templateUrl: 'views/signUp.html'
+        })
+        .when('/success', {
+            controller: 'OrderSuccessController',
+            templateUrl: 'views/orderSuccess.html'
         })
         .otherwise({
             redirectTo: '/'

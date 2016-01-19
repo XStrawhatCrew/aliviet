@@ -1,0 +1,26 @@
+<div class="container padding">
+
+    <div class="panel panel-default " ng-repeat="order in orders">
+        <div class="panel-heading background-white">
+            <ul class="horizontal-order-list">
+                <li class="horizontal-order-list-item">
+                        <a href="javascript:void(0)" ng-click="isCollapsed = !isCollapsed">
+                            Đơn Hàng A{{$index + 1320}}
+                        </a>
+                </li >
+                <li class="horizontal-order-list-item ">1 Sản Phẩm</li>
+                <li class="horizontal-order-list-item "></li>
+            </ul>
+
+        </div>
+        <div ng-show="isCollapsed">
+            <div class="panel-body" ng-repeat="product in order">
+                Link: {{product.linkSource}}
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
