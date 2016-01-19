@@ -2,6 +2,12 @@ var app = angular.module('HomeApp', [ 'ngRoute', 'ngTouch'])
     .run(function ($rootScope) {
         $rootScope.isLoggedIn = restBase.user.isLoggedIn();
         $rootScope.orders = [];
+
+        $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
+
+            window.scrollTo(0, 0);
+
+        });
     });
 
 app.config(function ($routeProvider) {

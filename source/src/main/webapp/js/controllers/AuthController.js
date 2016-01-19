@@ -12,11 +12,17 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
         "password": ""
     };
 
-    $scope.createRequest = {
-        "username": "",
-        "email": "",
+    $scope.createUserRequest = {
+        "user": {
+            "username": "",
+            "email": "",
+            "fullName": "",
+            "phoneNumber": "",
+        },
         "password": "",
-        "re_password": ""
+        "confirmPassword": ""
+
+
     };
 
     $scope.doSignIn = function (isValid) {
@@ -41,4 +47,12 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
     $scope.doSignUp = function () {
 
     };
+    $scope.equalsPass = function () {
+        var pass = $scope.loginRequest.password;
+        var confirmPass = $scope.createUserRequest.confirmPassword;
+
+
+
+    };
+
 }]);
