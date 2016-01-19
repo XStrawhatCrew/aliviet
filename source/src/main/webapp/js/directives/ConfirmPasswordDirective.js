@@ -10,9 +10,12 @@ app.directive('compareTo', function () {
         },
         link: function (scope, elm, attrs, ngModel) {
             ngModel.$validators.compareTo = function (modelValue) {
+                console.log("modelValue=" + modelValue);
+                console.info(modelValue == scope.otherModelValue);
                 return modelValue == scope.otherModelValue;
             };
-            ngModel.$watch('otherModelValue', function () {
+            scope.$watch('otherModelValue', function () {
+                console.log(scope.otherModelValue);
                 ngModel.$validate();
             });
 

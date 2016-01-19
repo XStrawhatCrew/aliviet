@@ -201,21 +201,21 @@ restBase.user.login = function (username, password, success, fail) {
     restBase.post(
         'user/login',
         {
-            "username" : username,
-            "password" : password
+            "username": username,
+            "password": password
         },
         function (response) {
             restBase.cookie.set('token', response.token);
             restBase.cookie.set('userId', response.userId);
             restBase.cookie.set('username', username);
-            if(success) {
+            if (success) {
                 success();
             }
 
         },
-        function(jqXHR, textStatus) {
+        function (jqXHR, textStatus) {
             console.log("Error");
-            if(fail) {
+            if (fail) {
                 fail(jqXHR, textStatus);
             }
         })
@@ -226,8 +226,8 @@ restBase.user.login = function (username, password, success, fail) {
  * Check the user has Logged in;
  * @returns {boolean}
  */
-restBase.user.isLoggedIn = function() {
-    if(restBase.cookie.get('username')) {
+restBase.user.isLoggedIn = function () {
+    if (restBase.cookie.get('username')) {
         return true;
     }
     return false;
@@ -240,5 +240,25 @@ restBase.user.logout = function () {
     restBase.cookie.remove('token');
     restBase.cookie.remove('userId');
     restBase.cookie.remove('username');
+};
+
+restBase.user.create = function (createUserRequest, callback) {
+    restBase.post(
+        'user',
+        createUserRequest,
+        function (response) {
+            restBase.cookie.set('token', response.token);
+            restBase.cookie.set('userId', response.userId);
+            restBase.cookie.set('username', response.username);
+            if (callback) {
+                callback();
+            }
+        },
+        function (jqXHR, textStatus) {
+            if (callback) {
+                callback(jqXHR, textStatus);
+            }
+        }
+    );
 };
 /* **************** End User Resource **************** */
