@@ -6,12 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.aliviet.order.config.ApplicationConfig;
 import vn.aliviet.order.service.BaseService;
 import vn.aliviet.order.user.api.AuthenticatedUserToken;
+import vn.aliviet.order.user.api.CheckUserStatusRequest;
 import vn.aliviet.order.user.api.CreateUserRequest;
 import vn.aliviet.order.user.api.LoginRequest;
-import vn.aliviet.order.user.entity.AuthorizationToken;
-import vn.aliviet.order.user.entity.ExternalUser;
-import vn.aliviet.order.user.entity.Role;
-import vn.aliviet.order.user.entity.User;
+import vn.aliviet.order.user.entity.*;
 import vn.aliviet.order.user.exception.AuthenticationException;
 import vn.aliviet.order.user.exception.DuplicateUserException;
 import vn.aliviet.order.util.ValidatorUtil;
@@ -112,5 +110,22 @@ public class UserServiceImp extends BaseService implements UserService {
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+
+    @Override
+    public UserStatus checkUserStatus(CheckUserStatusRequest request) {
+        validate(request);
+        UserStatus userStatus = null;
+        boolean isExisted = false;
+        switch (request.getCheckType()) {
+            case email:
+                isExisted = userRepository.findByEmail(request.getValue()) != null;
+                break;
+            case username:
+                isExisted = userRepository.findByUsername(request.getValue()) != null;
+                break;
+        }
+        return new UserStatus(request.getValue(), request.getCheckType(), isExisted);
     }
 }

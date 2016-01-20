@@ -1,12 +1,10 @@
 package vn.aliviet.order.user;
 
 import vn.aliviet.order.user.api.AuthenticatedUserToken;
+import vn.aliviet.order.user.api.CheckUserStatusRequest;
 import vn.aliviet.order.user.api.CreateUserRequest;
 import vn.aliviet.order.user.api.LoginRequest;
-import vn.aliviet.order.user.entity.AuthorizationToken;
-import vn.aliviet.order.user.entity.ExternalUser;
-import vn.aliviet.order.user.entity.Role;
-import vn.aliviet.order.user.entity.User;
+import vn.aliviet.order.user.entity.*;
 
 /**
  * Created by windluffy on 31/12/2015.
@@ -43,5 +41,11 @@ public interface UserService {
      */
     public AuthorizationToken createAuthorizationToken(User user);
 
+    /***
+     * Check username, email is existed or not.
+     * @param request
+     * @return
+     */
+    public UserStatus checkUserStatus(CheckUserStatusRequest request);
 }
 
