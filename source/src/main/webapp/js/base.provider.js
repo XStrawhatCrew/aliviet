@@ -9,7 +9,7 @@ function restBase() {
  * root url of resources
  * @type {string}
  */
-restBase.rootURL = "http://localhost:1412/rest/";
+restBase.rootURL = "http://localhost:8080/rest/";
 
 /* **************** Cookies ************** */
 /**
@@ -242,7 +242,7 @@ restBase.user.logout = function () {
     restBase.cookie.remove('username');
 };
 
-restBase.user.create = function (createUserRequest, callback) {
+restBase.user.create = function (createUserRequest, success, error) {
     restBase.post(
         'user',
         createUserRequest,
@@ -250,15 +250,25 @@ restBase.user.create = function (createUserRequest, callback) {
             restBase.cookie.set('token', response.token);
             restBase.cookie.set('userId', response.userId);
             restBase.cookie.set('username', response.username);
-            if (callback) {
-                callback();
+            if (success) {
+                success();
             }
         },
         function (jqXHR, textStatus) {
-            if (callback) {
-                callback(jqXHR, textStatus);
+            if (error) {
+                error(jqXHR, textStatus);
             }
         }
     );
 };
+restBase.user.checkUserExisted = function (checkUserExisted, success, error) {
+    restBase.post(
+        'userStatus',
+        checkUserExisted,
+        success,
+        error
+    );
+
+};
+
 /* **************** End User Resource **************** */

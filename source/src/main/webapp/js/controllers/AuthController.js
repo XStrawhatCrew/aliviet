@@ -45,14 +45,82 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
     };
 
     $scope.doSignUp = function () {
+        var data = {
+            "user": {
+                "username": $scope.createUserRequest.user.username,
+                "email": $scope.createUserRequest.user.email,
+                "fullName": $scope.createUserRequest.user.fullName
+            },
+            "password": $scope.createUserRequest.password
+        };
+
+        restBase.user.create(
+            data,
+            function () {
+                console.log("OK");
+                toastr.success("Tạo tài khoản thành công");
+                $scope.$apply(function () {
+                    $location.path("/signIn");
+                });
+            },
+            function (jqXHR, textStatus) {
+                var jsonResponseText = $.parseJSON(jqXHR.responseText);
+
+                console.log(jsonResponseText);
+                toastr.error(jsonResponseText.applicationMessage, "Tạo tài khoản thất bại!");
+
+                $scope.errorMessage = jsonResponseText.applicationMessage;
+                console.log($scope.errorMessage);
+                console.log(jsonResponseText.consumerMessage);
+            });
+
 
     };
-    $scope.equalsPass = function () {
-        var pass = $scope.loginRequest.password;
-        var confirmPass = $scope.createUserRequest.confirmPassword;
+    $scope.checkUsernameExisted = function () {
+        //console.log("OK");
+        var data = {
+            "checkType": "username",
+            "value": $scope.createUserRequest.user.username
+        };
+        if ($scope.createUserRequest.user.username != null) {
+            //console.log(data);
+            restBase.user.checkUserExisted(
+                data,
+                function (jqXHR, textStatus) {
+                    //console.log(jqXHR.existed);
+                    if (jqXHR.existed = true) {
+                        $scope.errorUsername = "USERNAME này đã tồn tại";
+                    }
+                },
+                function () {
+                }
+            );
 
-
-
+        }
     };
+    $scope.checkEmailExisted = function () {
+        //console.log("OK");
+        var data = {
+            "checkType": "email",
+            "value": $scope.createUserRequest.user.email
+        };
+        if ($scope.createUserRequest.user.email != null) {
+            //console.log(data);
+            restBase.user.checkUserExisted(
+                data,
+                function (jqXHR, textStatus) {
+                    //console.log(jqXHR.existed);
+                    if (jqXHR.existed = true) {
+                        $scope.errorEmail = "EMAIL này đã tồn tại";
+                    }
+                },
+                function () {
+                }
+            );
+
+        }
+    };
+
 
 }]);
+

@@ -17,7 +17,7 @@
                                     <i class="icon-append fa fa-user"></i>
                                     <input type="text" name="username" ng-model="createUserRequest.user.username"
                                            ng-pattern="/^[A-Za-z0-9_]+$/" ng-minlength="3" ng-maxlength="20"
-                                           ng-required="true">
+                                           ng-required="true" ng-change="checkUsernameExisted()">
                                     <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới, từ 3-20
                                         ký tự</b>
 
@@ -36,6 +36,12 @@
                                     <p class="error-message"
                                        ng-show="userSignUp.username.$error.pattern && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Chỉ chấp nhận chữ cái, số, hoặc gạch dưới</p>
+
+                                    <p class="error-message"
+                                       ng-show="(userSignUp.username.$touched || userSignUp.$submitted)">
+                                        {{errorUsername}}</p>
+
+
                                 </label>
                             </div>
                         </div>
@@ -48,7 +54,8 @@
                             <div class="col col-8">
                                 <label class="input">
                                     <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="fullName" ng-model="createUserRequest.user.fullName" ng-required="true">
+                                    <input type="text" name="fullName" ng-model="createUserRequest.user.fullName"
+                                           ng-required="true">
                                     <b class="tooltip tooltip-bottom-right">Họ tên thật của bạn</b>
 
                                     <p class="error-message"
@@ -75,10 +82,12 @@
                                        ng-show="userSignUp.password.$error.required && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         không được để trống</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.password.$error.minlength && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         ít nhất 6 ký tự</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.password.$error.maxlength && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
@@ -124,7 +133,8 @@
                                 <label class="input">
                                     <i class="icon-append fa fa-envelope"></i>
                                     <input type="text" name="email" ng-model="createUserRequest.user.email"
-                                           ng-pattern='/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i' ng-required="true">
+                                           ng-pattern='/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i'
+                                           ng-required="true" ng-change="checkEmailExisted()">
                                     <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới</b>
 
                                     <p class="error-message"
@@ -135,6 +145,12 @@
                                     <p class="error-message"
                                        ng-show="userSignUp.email.$error.pattern && (userSignUp.email.$touched || userSignUp.$submitted)">
                                         Email sai định dạng</p>
+
+                                    <p class="error-message"
+                                       ng-show="(userSignUp.username.$touched || userSignUp.$submitted)">
+                                        {{errorEmail}}</p>
+
+
                                 </label>
 
 
@@ -160,9 +176,11 @@
                                     <p class="error-message"
                                        ng-show="userSignUp.phoneNumber.$error.pattern && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại không hợp lệ</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.phoneNumber.$error.minlength && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại ít nhất 10 ký tự</p>
+
                                     <p class="error-message"
                                        ng-show="userSignUp.phoneNumber.$error.maxlength && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại nhiều nhất 20 ký tự</p>
