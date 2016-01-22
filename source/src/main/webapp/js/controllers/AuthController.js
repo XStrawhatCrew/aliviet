@@ -53,6 +53,8 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
             },
             "password": $scope.createUserRequest.password
         };
+        $rootScope.user = $scope.createUserRequest.user;
+
 
         restBase.user.create(
             data,
@@ -60,7 +62,8 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
                 console.log("OK");
                 toastr.success("Tạo tài khoản thành công");
                 $scope.$apply(function () {
-                    $location.path("/signIn");
+                    $location.path("/signUpSuccess");
+
                 });
             },
             function (jqXHR, textStatus) {
@@ -129,7 +132,5 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
 
         }
     };
-
-
 }]);
 
