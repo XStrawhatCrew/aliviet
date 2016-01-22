@@ -37,9 +37,9 @@
                                        ng-show="userSignUp.username.$error.pattern && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Chỉ chấp nhận chữ cái, số, hoặc gạch dưới</p>
 
-                                    <p class="error-message"
-                                       ng-show="(userSignUp.username.$touched || userSignUp.$submitted)">
-                                        {{errorUsername}}</p>
+                                    <p class="error-message" ng-show="messageErrorUsername">
+                                        USERNAME này đã tồn tại
+                                    </p>
 
 
                                 </label>
@@ -146,9 +146,9 @@
                                        ng-show="userSignUp.email.$error.pattern && (userSignUp.email.$touched || userSignUp.$submitted)">
                                         Email sai định dạng</p>
 
-                                    <p class="error-message"
-                                       ng-show="(userSignUp.username.$touched || userSignUp.$submitted)">
-                                        {{errorEmail}}</p>
+                                    <p class="error-message" ng-show="messageErrorEmail">
+                                        EMAIL này đã tồn tại
+                                    </p>
 
 
                                 </label>

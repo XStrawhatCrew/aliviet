@@ -82,14 +82,18 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
             "checkType": "username",
             "value": $scope.createUserRequest.user.username
         };
+
         if ($scope.createUserRequest.user.username != null) {
             //console.log(data);
             restBase.user.checkUserExisted(
                 data,
                 function (jqXHR, textStatus) {
-                    //console.log(jqXHR.existed);
-                    if (jqXHR.existed = true) {
-                        $scope.errorUsername = "USERNAME này đã tồn tại";
+                    $scope.messageErrorUsername = false;
+                    if (jqXHR.existed == true) {
+                        //console.log(jqXHR.existed);
+                        $scope.messageErrorUsername = !$scope.messageErrorUsername;
+                    } else {
+                        $scope.messageErrorUsername = $scope.messageErrorUsername;
                     }
                 },
                 function () {
@@ -98,20 +102,25 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
 
         }
     };
+    $scope.errorEmail = "";
     $scope.checkEmailExisted = function () {
         //console.log("OK");
         var data = {
             "checkType": "email",
             "value": $scope.createUserRequest.user.email
         };
+
         if ($scope.createUserRequest.user.email != null) {
             //console.log(data);
             restBase.user.checkUserExisted(
                 data,
                 function (jqXHR, textStatus) {
                     //console.log(jqXHR.existed);
-                    if (jqXHR.existed = true) {
-                        $scope.errorEmail = "EMAIL này đã tồn tại";
+                    $scope.messageErrorEmail = false;
+                    if (jqXHR.existed == true) {
+                        $scope.messageErrorEmail = !$scope.messageErrorEmail;
+                    } else {
+                        $scope.messageErrorEmail = $scope.messageErrorEmail;
                     }
                 },
                 function () {
