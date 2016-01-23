@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 col-xs-12">
-            <form ng-submit="doSignUp(userSignUp.$isValid)" name="userSignUp" id="sky-form" class="sky-form" novalidate>
+            <form ng-submit="doSignUp(userSignUp.$isValid)" name="userSignUp" id="sky-form" class="sky-form">
                 <header>Đăng ký tài khoản</header>
 
                 <fieldset>
@@ -77,6 +77,7 @@
                                     <input type="password" name="password" ng-model="createUserRequest.password"
                                            ng-minlength="6" ng-maxlength="50"
                                            ng-required="true">
+
 
                                     <p class="error-message"
                                        ng-show="userSignUp.password.$error.required && (userSignUp.password.$touched || userSignUp.$submitted)">
@@ -182,7 +183,7 @@
                                         Số điện thoại ít nhất 10 ký tự</p>
 
                                     <p class="error-message"
-                                       ng-show="userSignUp.phoneNumber.$error.maxlength && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
+                                       ng-show="userSignUp.phoneNumber.$error.maxlength && userSignUp.phoneNumber.$touched && userSignUp.$submitted">
                                         Số điện thoại nhiều nhất 20 ký tự</p>
                                 </label>
 
@@ -190,6 +191,7 @@
                             </div>
                         </div>
                     </section>
+
 
                     <section>
                         <div class="row">
