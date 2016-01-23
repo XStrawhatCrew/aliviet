@@ -5992,10 +5992,14 @@ SIDE BAR ARCHIVE LIST
     margin-top: 10px;
 }
 
-
-.error-msg{
+.error-msg {
     color: red;
-    font-size:12px;
+    font-size: 12px;
+}
+
+.error-message {
+    color: red;
+    font-size: 13px;
 }
 
 /* make order website */
@@ -6288,39 +6292,37 @@ h1 {
     height: 20px;
 }
 
-
-
-.collapse-header{
-    border:1px solid #DDD;
+.collapse-header {
+    border: 1px solid #DDD;
 }
 
-.padding{
-    padding-top:10px;
+.padding {
+    padding-top: 10px;
 }
 
-.background-white{
+.background-white {
     background: white !important;
 }
 
-.horizontal-order-list{
+.horizontal-order-list {
     list-style-type: none;
 }
 
-.horizontal-order-list-item{
+.horizontal-order-list-item {
     display: inline-block;
     vertical-align: middle;
     padding-left: 24px;
 }
 
-.horizontal-order-list-item:before{
+.horizontal-order-list-item:before {
     content: '|';
     display: inline-block;
     margin: 0 1.23em;
     color: #E0E0E0;
 }
 
-.horizontal-order-list-item:first-child:before{
-    content:'';
+.horizontal-order-list-item:first-child:before {
+    content: '';
 }
 
 
