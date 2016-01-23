@@ -6302,14 +6302,18 @@ h1 {
     background: white !important;
 }
 
+.margin-auto{
+    margin-top:5px;
+}
+
 .horizontal-order-list{
     list-style-type: none;
+    padding: 0;
 }
 
 .horizontal-order-list-item{
     display: inline-block;
     vertical-align: middle;
-    padding-left: 24px;
 }
 
 .horizontal-order-list-item:before{
@@ -6322,6 +6326,7 @@ h1 {
 .horizontal-order-list-item:first-child:before{
     content:'';
 }
+
 
 
 

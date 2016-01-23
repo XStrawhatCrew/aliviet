@@ -1,21 +1,28 @@
 <div class="container padding">
 
     <div class="panel panel-default " ng-repeat="order in orders">
-        <div class="panel-heading background-white">
+        <div class="panel-heading background-white margin-auto">
             <ul class="horizontal-order-list">
                 <li class="horizontal-order-list-item">
-                        <a href="javascript:void(0)" ng-click="isCollapsed = !isCollapsed">
-                            Đơn Hàng A{{$index + 1320}}
+                        <a  href="javascript:void(0)" ng-click="isCollapsed = !isCollapsed">
+                            ĐƠN HÀNG A{{$index + 1320}}
                         </a>
                 </li >
-                <li class="horizontal-order-list-item ">1 Sản Phẩm</li>
-                <li class="horizontal-order-list-item "></li>
+                <li class="horizontal-order-list-item ">{{order.length}} Sản Phẩm</li>
+                <li class="horizontal-order-list-item ">Standard Giao hàng từ 20 - 23/01/2016</li>
+                <li class="horizontal-order-list-item">Đang chờ xử lý</li>
             </ul>
 
         </div>
         <div ng-show="isCollapsed">
             <div class="panel-body" ng-repeat="product in order">
-                Link: {{product.linkSource}}
+                {{$index + 1}}.
+                Link: <a href="#" style="color:#0072b2;">{{product.linkSource}}</a> ,
+                Màu sắc: {{product.color}} ,
+                Size: {{prodcut.size}} ,
+                Số Lượng: {{product.quantity}} ,
+                Giá: {{product.price}} ,
+                Ghi Chú: {{product.notes}}
             </div>
 
         </div>
