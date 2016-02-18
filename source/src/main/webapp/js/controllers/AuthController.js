@@ -2,7 +2,6 @@
  * Created by windluffy on 06/01/2016.
  */
 app.controller('AuthController', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
-    console.log($rootScope.isLoggedIn);
     if ($rootScope.isLoggedIn) {
         $location.path("/");
     }
@@ -28,7 +27,6 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
     $scope.doSignIn = function (isValid) {
         if (!isValid) return;
 
-        console.log("OK");
         restBase.user.login(
             $scope.loginRequest.username,
             $scope.loginRequest.password,
@@ -43,8 +41,9 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
             }
         );
     };
-
-    $scope.doSignUp = function () {
+    $scope.checked = false;
+    $scope.doSignUp = function (isValid) {
+        if(!isValid || !$scope.checked) return;
         var data = {
             "user": {
                 "username": $scope.createUserRequest.user.username,
@@ -56,10 +55,13 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
         $rootScope.user = $scope.createUserRequest.user;
 
 
+
+
+
+
         restBase.user.create(
             data,
             function () {
-                console.log("OK");
                 toastr.success("Tạo tài khoản thành công");
                 $scope.$apply(function () {
                     $location.path("/signUpSuccess");
@@ -69,12 +71,9 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', function 
             function (jqXHR, textStatus) {
                 var jsonResponseText = $.parseJSON(jqXHR.responseText);
 
-                console.log(jsonResponseText);
                 toastr.error(jsonResponseText.applicationMessage, "Tạo tài khoản thất bại!");
 
                 $scope.errorMessage = jsonResponseText.applicationMessage;
-                console.log($scope.errorMessage);
-                console.log(jsonResponseText.consumerMessage);
             });
 
 

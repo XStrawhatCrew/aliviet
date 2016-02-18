@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 col-xs-12">
-            <form ng-submit="doSignUp(userSignUp.$isValid)" name="userSignUp" id="sky-form" class="sky-form">
+            <form ng-submit="doSignUp(userSignUp.$valid
+            )" name="userSignUp" id="sky-form" class="sky-form" novalidate>
                 <header>Đăng ký tài khoản</header>
 
                 <fieldset>
@@ -197,9 +198,14 @@
                         <div class="row">
                             <div class="col col-4"></div>
                             <div class="col col-8">
-                                <label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Ghi nhớ
-                                    đăng
-                                    nhập</label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="check" ng-model="checked"><i></i>Tôi đồng ý <a href="#/signIn" target="_blank">quy
+                                    định</a> của công ty.
+                                    <p class="error-message" ng-show="userSignUp.$submitted && !checked">Để sử dụng dịch
+                                        vụ, bạn phải đồng ý với các quy
+                                        định của công ty chúng tôi.
+                                    </p>
+                                </label>
                             </div>
                         </div>
                     </section>
