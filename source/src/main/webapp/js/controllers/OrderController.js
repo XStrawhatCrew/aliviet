@@ -2,9 +2,10 @@
  * Created by tinblanc on 1/12/16.
  */
 
-app.controller('OrderController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerService', function ($scope, $rootScope, ProductCrawlerService) {
     $scope.orders = [];
     $scope.isCollapsed = false;
+    $scope.inputLink = "";
 
 
 
@@ -17,6 +18,9 @@ app.controller('OrderController', ['$scope', '$rootScope', function ($scope, $ro
     $scope.makeANewProductObj = function () {
         var obj = new Object();
         obj.linkSource = "";
+        obj.featureImage = "";
+        obj.productName = "";
+        obj.shopName = "";
         obj.color = "";
         obj.size = "";
         obj.quantity = "";
@@ -50,8 +54,18 @@ app.controller('OrderController', ['$scope', '$rootScope', function ($scope, $ro
     };
 
     $scope.addProduct = function (isValid, order) {
-        if (!isValid) return;
-        order.push($scope.makeANewProductObj());
+        //if (!isValid) return;
+        //order.push($scope.makeANewProductObj());
+        ProductCrawlerService($scope.inputLink).then(
+            function (response) {
+                var result = response.data;
+                var obj = $scope.makeANewProductObj();
+                obj.linkSource = $scope.inputLink;
+                obj.featureImage = result.feature_image;
+                obj.productName = result.product_name;
+                obj.shopName = result.shop_name;
+            }
+        );
 
     };
 
