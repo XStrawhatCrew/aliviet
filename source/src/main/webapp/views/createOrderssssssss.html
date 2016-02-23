@@ -1,0 +1,96 @@
+<section class="page_head">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>Tạo đơn hàng</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <form ng-submit="submit()" name="orderForm" novalidate>
+        <div class="row sub_content block-content-order" ng-repeat="order in orders" ng-form="validateForm">
+            <div class="carousel-intro">
+                <div class="col-md-12">
+                    <div class="dividerLatest">
+                        <h4>Đơn Hàng #<span>{{ $index +1}}</span></h4>
+
+                        <div class="gDot"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="div-img">
+                    <img src="img/hangcongxuong1.jpg">
+                </div>
+                <div id="div-content">
+                    <table class="table-css">
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <th class="nameProduct" colspan="5">Tên Sản Phẩm</th>
+                        </tr>
+                        <tr>
+                            <th colspan="5">link:</th>
+                        </tr>
+                        <tr>
+                            <th>Mau Sac/Chung Loai</th>
+                            <th>Size</th>
+                            <th>So Luong</th>
+                            <th>Gia</th>
+                            <th>Ghi Chu</th>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control" type="text"></td>
+                            <td><input class="form-control" type="text"></td>
+                            <td><input class="form-control" type="text"></td>
+                            <td><input class="form-control" type="text"></td>
+                            <td><input class="form-control" type="text"></td>
+                            <td>
+                                <a class="btn btn-danger" ng-click="">
+                                    <i class="fa fa-trash-o" title="Xoá sản phẩm"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" ng-form="validateForm">
+            <div class="div-input">
+                <input class="form-control"
+                       placeholder="Nhập link sản phẩm" name="link_{{$index}}" ng-model="product.linkSource"
+                       type="url" required>
+                    <span class="error-msg"
+                          ng-show="validateForm.link_{{$index}}.$error.required && (validateForm.link_{{$index}}.$touched || validateForm.$submitted)
+                    ">Link không được bỏ trống.</span>
+                    <span class="error-msg"
+                          ng-show="validateForm.link_{{$index}}.$error.url && (validateForm.link_{{$index}}.$touched || validateForm.$submitted)"
+                            >Link không hợp lệ.</span>
+            </div>
+
+            <div class="div-button">
+                <div class="col-xs-12 col-sm-2">
+                    <a class="btn btn-default"
+                       name="buttonAddProduct"
+                       ng-click="addProduct(validateForm.$valid, order); validateForm.$setSubmitted();">
+                        <i class="fa fa-plus"></i>Thêm sản phẩm
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </form>
+
+
+</div>
+

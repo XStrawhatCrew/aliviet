@@ -17,9 +17,9 @@ app.config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/create-orders', {
+        .when('/create-orders-link', {
             controller: 'OrderController',
-            templateUrl: 'views/createOrders.html'
+            templateUrl: 'views/createOrderssssssss.html'
         })
         .when('/signIn', {
             controller: 'AuthController',
