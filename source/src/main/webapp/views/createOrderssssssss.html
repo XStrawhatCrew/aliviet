@@ -14,7 +14,8 @@
             <div class="carousel-intro">
                 <div class="col-md-12">
                     <div class="dividerLatest">
-                        <h4>Đơn Hàng #<span>{{ $index +1}}</span></h4>
+                        <h4>Đơn Hàng #<span>{{ $index +1}}</span>. Tên Shop: <span class="tb-shop-name">{{getShopName(order)}}</span>
+                        </h4>
 
                         <div class="gDot"></div>
                     </div>
@@ -22,110 +23,63 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="div-img">
-                    <img src="img/hangcongxuong1.jpg">
-                </div>
-                <div class="div-content">
-                    <table class="table-css">
-                        <thead></thead>
-                        <tbody>
-                        <tr>
-                            <th class="nameProduct" colspan="5">Tên Sản Phẩm</th>
-                        </tr>
-                        <tr>
-                            <th colspan="5">link:</th>
-                        </tr>
-                        <tr>
-                            <th>Màu Sắc</th>
-                            <th>Size</th>
-                            <th>Số Lượng</th>
-                            <th>Giá</th>
-                            <th>Ghi Chú</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select class="col-xs-3">
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="col-xs-3">
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                </select>
-                            </td>
-                            <td><input class="col-xs-1" type="number"></td>
-                            <td><input class="col-xs-3" type="text"></td>
-                            <td><input class="col-xs-4" type="text"></td>
-                            <td>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div class="product-items" ng-repeat="product in order">
+                <div class="row">
+                    <div class="div-img">
+                        <img ng-src="{{product.featureImage}}">
+                    </div>
+                    <div class="div-content" style="height: 50px; width: 600px; overflow: hidden;">
+                        <h4 class="tb-product-name" style="line-height: 0;">{{product.productName}}</h4>
+                        <a target="_blank" href="{{product.linkSource}}" class="tb-product-link" style="line-height: 25px;">{{product.linkSource}}</a>
+                    </div>
+                    <div class="div-content" style="height: 50px;">
+                        <table class="table-css">
+                            <thead>
+                                <tr>
+                                    <th style="width:16.7%">Màu Sắc/颜色分类</th>
+                                    <th style="width:16.7%">Size/尺码</th>
+                                    <th style="width:16.7%">Gói/套餐</th>
+                                    <th style="width:16.7%">Số Lượng</th>
+                                    <th style="width:8.3%">Giá</th>
+                                    <th style="width:25%">Ghi Chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td style="width:16.7%">
+                                    <button class="btn btn-default" ng-show="!isShowColorSelection(product.colors)">Chọn ảnh</button>
+                                    <select ng-show="isShowColorSelection(product.colors)">
+                                        <option ng-repeat="color in product.colors.data">{{color}}</option>
+                                    </select>
+                                </td>
+                                <td style="width:16.7%">
+                                    <select>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                    </select>
+                                </td>
+                                <td style="width:16.7%">
+                                    <select>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                        <option>abc</option>
+                                    </select>
+                                </td>
+                                <td style="width:16.7%"><input type="number"></td>
+                                <td style="width:8.3%"><input type="text"></td>
+                                <td style="width:25%"><input type="text"></td>
+                            </tr>
+                            </tbody>
+                        </table>
 
+                    </div>
                 </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="div-img">
-                    <img src="img/hangcongxuong1.jpg">
-                </div>
-                <div class="div-content">
-                    <table class="table-css">
-                        <thead></thead>
-                        <tbody>
-                        <tr>
-                            <th class="nameProduct" colspan="5">Tên Sản Phẩm</th>
-                        </tr>
-                        <tr>
-                            <th colspan="5">link:</th>
-                        </tr>
-                        <tr>
-                            <th>Màu Sắc</th>
-                            <th>Size</th>
-                            <th>Số Lượng</th>
-                            <th>Giá</th>
-                            <th>Ghi Chú</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select class="col-xs-3">
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="col-xs-3">
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                    <option>abc</option>
-                                </select>
-                            </td>
-                            <td><input class="col-xs-1" type="number"></td>
-                            <td><input class="col-xs-3" type="text"></td>
-                            <td><input class="col-xs-4" type="text"></td>
-                            <td>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+                <hr>
             </div>
         </div>
 

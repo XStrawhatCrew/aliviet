@@ -6362,41 +6362,32 @@ h1 {
     margin-right: 20px;
 }
 
-table.table-css tbody tr td input {
-    width: 142px;
-    height: 30px;
-    margin-right: 10px;
-
-}
-
-table.table-css tbody tr td input.col-xs-1 {
-    width: 70px;
-}
-
-table.table-css tbody tr td input.col-xs-4 {
-    width: 238px;
-}
-
-table.table-css tbody tr {
-    height: 24px;
-}
-
-table.table-css tbody tr td select {
-    width: 130px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-table.table-css tbody tr td a {
-    position: absolute;
-}
-
 .nameProduct {
     font-size: 18px;
 }
 
+.table-css tbody tr td input {
+    width: 90%;
+}
+
+.table-css tbody tr td select {
+    width: 90%;
+}
 
 .block-content-order.row{
     position: relative;
 }
 
+.tb-shop-name {
+    color: #5890ff;
+}
+
+.tb-product-link {
+    color: #5890ff;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.tb-product-name {
+    color: red;
+}
