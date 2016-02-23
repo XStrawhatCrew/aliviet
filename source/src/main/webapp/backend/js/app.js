@@ -4,12 +4,16 @@
 
 var app = angular.module('BackendApp', ['ngRoute']);
 
-app.config(function($routeProvider){
-    $routeProvider.when('/',{
-        templateUrl:'views/home.html'
-    }).when('/management',{
-        templateUrl:'views/management.html'
+app.config(function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'views/home.html'
+    }).when('/management', {
+        controller: 'OrderAttrsCtrl',
+        templateUrl: 'views/management.html'
+    }).when('/orders/:id', {
+        controller: 'DetailOrderController',
+        templateUrl: 'views/detailOrder.html'
     }).otherwise({
-        redirectTo:'/'
+        redirectTo: '/'
     });
 });

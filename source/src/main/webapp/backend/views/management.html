@@ -16,36 +16,210 @@
         </div>
 
 
-        <div class="row" ng-controller="OrderAttrsCtrl">
+        <div class="row">
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
                         Quản Lý Đơn Hàng
                     </header>
                     <div class="panel-body">
-                        <form  role="form" >
+                        <form role="form">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control"  placeholder="Tìm theo mã đơn hàng, mã đơn site gốc hoặc user mua hàng...">
+                                        <input type="text" class="form-control"
+                                               placeholder="Tìm theo mã đơn hàng, mã đơn site gốc hoặc user mua hàng..."
+                                               ng-model="searchID">
                                     </div>
                                     <div class="col-lg-3">
-                                        <input type="text" class="form-control"  placeholder="Mã vận đơn">
+                                        <input type="text" class="form-control" placeholder="Mã vận đơn">
                                     </div>
                                     <div class="col-lg-3">
-                                        <input type="text" class="form-control"  placeholder="Nhập ID, mã khách, tên khách">
+                                        <input type="text" class="form-control"
+                                               placeholder="Nhập ID, mã khách, tên khách">
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div class="form-group" id="order-attrs" >
+                            <div class="form-group" id="order-attrs">
 
                                 <button type="button" ng-repeat="orderattribute in orderattributes"
                                         class="btn margin-button {{getClassByStatus(orderattribute.status)}}"
-                                        ng-click="changeStatus($index, $event)">{{orderattribute.title}}</button>
+                                        ng-click="changeStatus($index, $event)">{{orderattribute.title}}
+                                </button>
 
                             </div>
+
+                            <div id="showHide">
+                                <button type="button" class="bt btn-lg btn-default" data-toggle="collapse"
+                                        data-target="#demo">Thêm bộ lọc
+                                </button>
+
+                                <div id="demo" class="collapse">
+                                        them bo loc
+
+                                </div>
+
+                            </div>
+
+                            <div id="div-search">
+                                <div id="div-search-left">
+                                    co 123123 ket qua
+
+                                </div>
+                                <div id="div-search-right">
+                                    <div style="float:left;">
+                                        lâu hơn<a href=""> 1 ngày</a>|<a href="">3 ngày</a>|<a href="">7 ngày</a>|<a
+                                            href="">15 ngày</a>
+                                    </div>
+                                    <div style="float: left; margin-left: 20px;">
+                                        Theo:
+                                        <select>
+                                            <option>Tạo đơn</option>
+                                            <option>abc</option>
+                                            <option>abc</option>
+                                        </select>
+                                    </div>
+                                    <div style="float: left;margin-left: 20px;overflow: hidden;">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div id="wrapper-list-order">
+                                <div id="A-List-Order" ng-repeat="items in listOrder | filter:searchID">
+
+                                    <div id="list-order-header">
+                                        <div id="list-order-header-left">
+                                            <div id="div-img">
+                                                <a href="#/orders/{{$index}}">
+                                                    <img ng-src="{{items.avatar}}">
+                                                </a>
+                                            </div>
+                                            <div id="div-link">
+                                                <a href="#/orders/{{$index}}">{{items.maKH}}</a>/<a href="">{{items.nameKH}}</a>
+                                            </div>
+                                        </div>
+                                        <div id="list-order-header-right">
+                                            <span>{{items.trangthai| uppercase}}</span>
+                                            <button type="button" class="btn btn-default">Chi Tiết</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="list-order-contentBot">
+                                        <table>
+                                            <thead></thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="values">
+                                                    id:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.id}}
+                                                </td>
+                                                <td class="values">
+                                                    Nguoi Ban:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.nguoiban}}
+                                                </td>
+                                                <td class="values">
+                                                    VND:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.VND}}
+                                                </td>
+                                                <td class="values">
+                                                    Dat coc:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.datcoc}}
+                                                </td>
+                                                <td class="values">
+                                                    kiem hang:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.kiemhang}}
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td class="values">
+                                                    ma vach:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.mavach}}
+                                                </td>
+                                                <td class="values">
+                                                    Alwang:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.alwang}}
+                                                </td>
+                                                <td class="values">
+                                                    NDT:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.NDT}}
+                                                </td>
+                                                <td class="values">
+                                                    Da pai:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.dapai}}
+                                                </td>
+                                                <td class="values">
+                                                    Cho giao:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.chogiao}}
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td class="values">
+                                                    Kho:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.kho}}
+                                                </td>
+                                                <td class="values">
+                                                    Acc mua hang:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.accMua}}
+                                                </td>
+                                                <td class="values">
+                                                    SLG:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.SLG}}
+                                                </td>
+                                                <td class="values">
+                                                    Dam phan:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.damphan}}
+                                                </td>
+                                                <td class="values">
+                                                    Y/C giao:
+                                                </td>
+                                                <td>
+                                                    {{items.detail.ycgiao}}
+                                                </td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </form>
 
