@@ -6398,3 +6398,7 @@ h1 {
     color: red;
     line-height: 0;
 }
+.div-content-error-area{
+    margin-left: 150px;
+    float: left;
+}

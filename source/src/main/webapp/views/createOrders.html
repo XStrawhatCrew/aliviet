@@ -30,27 +30,31 @@
                     </div>
                     <div class="div-content" style="height:40px; width: 600px; overflow: hidden;">
                         <h4 class="tb-product-name">{{product.productName}}</h4>
-                        <a target="_blank" href="{{product.linkSource}}" class="tb-product-link">{{product.linkSource}}</a>
+                        <a target="_blank" href="{{product.linkSource}}"
+                           class="tb-product-link">{{product.linkSource}}</a>
                     </div>
                     <div class="div-content" style="height: 60px; width: 800px">
                         <table class="table-css">
                             <thead>
-                                <tr>
-                                    <th style="width:20%">Màu Sắc/颜色分类</th>
-                                    <th style="width:16.7%">Size/尺码</th>
-                                    <th style="width:16.7%">Gói/套餐</th>
-                                    <th style="width:8.3%">Số Lượng</th>
-                                    <th style="width:8.3%">Giá</th>
-                                    <th style="width:30%">Ghi Chú</th>
-                                </tr>
+                            <tr>
+                                <th style="width:20%">Màu Sắc/颜色分类</th>
+                                <th style="width:16.7%">Size/尺码</th>
+                                <th style="width:16.7%">Gói/套餐</th>
+                                <th style="width:8.3%">Số Lượng</th>
+                                <th style="width:8.3%">Giá</th>
+                                <th style="width:30%">Ghi Chú</th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td style="width:20%">
-                                    <button class="btn btn-default" ng-show="!isShowColorSelection(product.colors)" ng-click="openColorImageSelection(product.colors.data)">Chọn ảnh</button>
+                                    <button class="btn btn-default" ng-show="!isShowColorSelection(product.colors)"
+                                            ng-click="openColorImageSelection(product.colors.data)">Chọn ảnh
+                                    </button>
                                     <select ng-show="isShowColorSelection(product.colors)" ng-model="product.color">
                                         <option value="">--Chọn màu sắc--</option>
-                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}</option>
+                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td style="width:16.7%">
@@ -68,16 +72,40 @@
                                     </select>
                                     <select ng-show="product.packages.length != 0" ng-model="product.package">
                                         <option value="">--Chọn Size--</option>
-                                        <option ng-repeat="package in product.packages" value="{{package}}">{{package}}</option>
+                                        <option ng-repeat="package in product.packages" value="{{package}}">
+                                            {{package}}
+                                        </option>
                                     </select>
                                 </td>
-                                <td style="width:8.3%"><input type="number" ng-model="product.quantity" min="1"></td>
-                                <td style="width:8.3%"><input type="number" ng-model="product.price" min="0"></td>
-                                <td style="width:30%"><input type="text" ng-model="product.notes"></td>
+                                <td style="width:8.3%">
+                                    <input type="number" ng-model="product.quantity" min="1">
+                                </td>
+                                <td style="width:8.3%">
+                                    <input type="number" ng-model="product.price" min="0">
+                                </td>
+                                <td style="width:30%">
+                                    <input type="text" ng-model="product.notes">
+                                </td>
                             </tr>
                             </tbody>
                         </table>
-
+                    </div>
+                    <div class="div-content-error-area">
+                        <span class="error-msg"
+                              ng-show="checkColor(product,product.color)">Bạn chưa chọn màu<br>
+                        </span>
+                        <span class="error-msg"
+                              ng-show="checkSize(product,product.size)">Bạn chưa chọn size<br>
+                        </span>
+                        <span class="error-msg"
+                              ng-show="checkPackage(product,product.package)">Bạn chưa chọn Gói<br>
+                        </span>
+                        <span class="error-msg"
+                              ng-show="!checkNumber(product.quantity)">Số lượng không hợp lệ<br>
+                        </span>
+                        <span class="error-msg"
+                              ng-show="!checkNumber(product.price)">Giá không hợp lệ<br>
+                        </span>
                     </div>
                 </div>
                 <hr>

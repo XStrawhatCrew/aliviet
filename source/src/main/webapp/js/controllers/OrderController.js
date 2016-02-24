@@ -16,6 +16,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         obj.shopName = "";
         obj.color = "";
         obj.size = "";
+        obj.package = "";
         obj.quantity = "";
         obj.price = "";
         obj.notes = "";
@@ -54,8 +55,9 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                 obj.sizes = result.sizes;
                 obj.packages = result.packages;
                 obj.quantity = 1;
+                obj.price = 1;
 
-                if($scope.orders.length == 0) {
+                if ($scope.orders.length == 0) {
                     $scope.orders.push([]);
                     $scope.orders[0].push(obj);
                 } else if ($scope.orders.length == 1 && $scope.orders[0].length == 0) {
@@ -82,7 +84,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         return $scope.orders.length != 0;
     };
 
-    $scope.isShowColorSelection = function(colors) {
+    $scope.isShowColorSelection = function (colors) {
         return colors.type == 'text';
     };
 
@@ -136,7 +138,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         $scope.orders.push($scope.makeANewOrderObj());
     };
 
-    $scope.getShopName = function(order) {
+    $scope.getShopName = function (order) {
         return order[0].shopName;
     };
 
@@ -145,6 +147,33 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
     };
 
     $scope.init();
+    $scope.checkNumber = function (soluong) {
+        if (soluong > 0) {
+            return true;
+        }
+    };
+    $scope.checkSize = function (product, size) {
+        if (product.sizes.length == 0)
+            return false;
+        else if (size == "") {
+            return true;
+        }
+    };
+    $scope.checkPackage = function (product, package) {
+        if (product.packages.length == 0) {
+            return false;
+        } else if (package == "") {
+            return true;
+        }
+    };
+    $scope.checkColor = function (product, color) {
+        if (product.colors.length == 0) {
+            return false;
+        } else if (color == "") {
+            return true;
+        }
+    };
+
 
 
 }]);
