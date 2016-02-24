@@ -30,27 +30,36 @@
                     </div>
                     <div class="div-content" style="height:40px; width: 600px; overflow: hidden;">
                         <h4 class="tb-product-name">{{product.productName}}</h4>
-                        <a target="_blank" href="{{product.linkSource}}" class="tb-product-link">{{product.linkSource}}</a>
+                        <a target="_blank" href="{{product.linkSource}}"
+                           class="tb-product-link">{{product.linkSource}}</a>
                     </div>
                     <div class="div-content" style="height: 60px; width: 800px">
                         <table class="table-css">
                             <thead>
-                                <tr>
-                                    <th style="width:20%">Màu Sắc/颜色分类</th>
-                                    <th style="width:16.7%">Size/尺码</th>
-                                    <th style="width:16.7%">Gói/套餐</th>
-                                    <th style="width:8.3%">Số Lượng</th>
-                                    <th style="width:8.3%">Giá</th>
-                                    <th style="width:30%">Ghi Chú</th>
-                                </tr>
+                            <tr>
+                                <th style="width:20%">Màu Sắc/颜色分类</th>
+                                <th style="width:16.7%">Size/尺码</th>
+                                <th style="width:16.7%">Gói/套餐</th>
+                                <th style="width:8.3%">Số Lượng</th>
+                                <th style="width:8.3%">Giá</th>
+                                <th style="width:30%">Ghi Chú</th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td style="width:20%">
-                                    <button class="btn btn-default" ng-show="!isShowColorSelection(product.colors)" ng-click="openColorImageSelection(product.colors.data)">Chọn ảnh</button>
+                                    <button class="btn btn-default"
+                                            ng-show="!isShowColorSelection(product.colors) && product.color == ''"
+                                            ng-click="openColorImageSelection(product, product.colors.data)">Chọn ảnh
+                                    </button>
+                                    <img ng-src="{{product.color}}"
+                                         ng-show="!isShowColorSelection(product.colors) && product.color != ''"
+                                         ng-click="openColorImageSelection(product, product.colors.data)"
+                                         class="img-option"/>
                                     <select ng-show="isShowColorSelection(product.colors)" ng-model="product.color">
                                         <option value="">--Chọn màu sắc--</option>
-                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}</option>
+                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td style="width:16.7%">
@@ -68,7 +77,9 @@
                                     </select>
                                     <select ng-show="product.packages.length != 0" ng-model="product.package">
                                         <option value="">--Chọn Size--</option>
-                                        <option ng-repeat="package in product.packages" value="{{package}}">{{package}}</option>
+                                        <option ng-repeat="package in product.packages" value="{{package}}">
+                                            {{package}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td style="width:8.3%"><input type="number" ng-model="product.quantity" min="1"></td>
@@ -86,10 +97,10 @@
 
 
         <div class="row" ng-form="validateForm" style="margin-top:20px">
-            <div class="div-input">
-                <input class="form-control"
+            <div class="col-sm-4">
+                <input class="form-control" ng-disabled="isLoadingProduct"
                        placeholder="Nhập link sản phẩm" ng-model="inputLink"
-                       type="url" required>
+                       type="url" required style="margin-left: -15px;">
                     <span class="error-msg"
                           ng-show="validateForm.link_{{$index}}.$error.required && (validateForm.link_{{$index}}.$touched || validateForm.$submitted)
                     ">Link không được bỏ trống.</span>
@@ -98,16 +109,20 @@
                             >Link không hợp lệ.</span>
             </div>
 
-            <div class="div-button">
-                <div class="col-xs-12 col-sm-8">
-                    <a class="btn btn-default"
-                       name="buttonAddProduct"
-                       ng-click="addProduct(validateForm.$valid, order);validateForm.$setSubmitted();">
-                        <i class="fa fa-plus"></i>Thêm sản phẩm
-                    </a>
-                </div>
+            <div class="col-sm-2">
+                <a class="btn btn-default"
+                   ng-disabled="isLoadingProduct"
+                   style="margin-left: -45px"
+                   name="buttonAddProduct"
+                   ng-click="addProduct(validateForm.$valid, order);validateForm.$setSubmitted();">
+                    <i class="fa fa-plus"></i>Thêm sản phẩm
+                </a>
             </div>
-            <div class="col-xs-12 col-sm-4" style="float: right; padding-right: 0">
+            <div class="col-sm-2">
+                <div class="ajax-loader" style="margin-left: -50px;" ng-show="isLoadingProduct"></div>
+            </div>
+
+            <div class="col-sm-2" style="float: right; padding-right: 0">
                 <a class="btn btn-info send-order-btn" ng-show="isShowCreateOrdersButton()"
                    ng-click="createOrders()">
                     <i class="fa fa-shopping-cart"></i> Gửi đơn hàng
