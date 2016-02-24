@@ -2,7 +2,7 @@
  * Created by tinblanc on 1/12/16.
  */
 
-app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerService', function ($scope, $rootScope, ProductCrawlerService) {
+app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerService', '$uibModal', function ($scope, $rootScope, ProductCrawlerService, $uibModal) {
     $scope.orders = [];
     $scope.isCollapsed = false;
     $scope.inputLink = "";
@@ -28,15 +28,8 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         console.log(order);
     };
 
-    $scope.createOrders = function (orders) {
-        if ($scope.orderForm.$valid) {
-            console.log(orders);
-            $rootScope.orders = orders;
-
-        } else {
-            toastr.error("Vui lòng điền đầy đủ những đơn còn trống !");
-        }
-
+    $scope.createOrders = function () {
+        console.log($scope.orders);
     };
 
 
@@ -58,6 +51,9 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                 obj.productName = result.product_name;
                 obj.shopName = result.shop_name;
                 obj.colors = result.colors;
+                obj.sizes = result.sizes;
+                obj.packages = result.packages;
+                obj.quantity = 1;
 
                 if($scope.orders.length == 0) {
                     $scope.orders.push([]);
@@ -82,8 +78,33 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
 
     };
 
+    $scope.isShowCreateOrdersButton = function () {
+        return $scope.orders.length != 0;
+    };
+
     $scope.isShowColorSelection = function(colors) {
         return colors.type == 'text';
+    };
+
+    $scope.openColorImageSelection = function (colorImages) {
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'colorImageSelection.html',
+            controller: 'ColorImageSelectionController',
+            size: 'sm',
+            resolve: {
+                items: function () {
+                    return colorImages;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
     };
 
     $scope.getIndexOrderSameShop = function (shopName) {

@@ -6333,7 +6333,7 @@ h1 {
 
 .div-input {
     float: left;
-    width: 300px;
+    width: 400px;
 }
 
 .div-button {
@@ -6343,7 +6343,7 @@ h1 {
 }
 
 .div-input input {
-    width: 300px;
+    width: 100%;
 }
 
 .div-img {
@@ -6370,8 +6370,13 @@ h1 {
     width: 90%;
 }
 
+.table-css tbody tr td button {
+    width: 90%;
+}
+
 .table-css tbody tr td select {
     width: 90%;
+    padding: 5px 0;
 }
 
 .block-content-order.row{
@@ -6386,8 +6391,10 @@ h1 {
     color: #5890ff;
     overflow: hidden;
     text-decoration: none;
+    line-height: 15px;
 }
 
 .tb-product-name {
     color: red;
+    line-height: 0;
 }
