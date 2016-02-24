@@ -40,11 +40,21 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         return order;
     };
 
-    $scope.addProduct = function (isValid, order) {
-        //if (!isValid) return;
-        //order.push($scope.makeANewProductObj());
+    $scope.isLoadingProduct = false;
+
+    $scope.setLoadingProduct = function (status) {
+        $scope.isLoadingProduct = status;
+    };
+
+    $scope.addProduct = function () {
+
+        $scope.setLoadingProduct(true);
+
         ProductCrawlerService($scope.inputLink).then(
             function (response) {
+                $scope.setLoadingProduct(false);
+                $scope.inputLink = "";
+
                 var result = response.data;
                 var obj = $scope.makeANewProductObj();
                 obj.linkSource = $scope.inputLink;
@@ -73,7 +83,6 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                         $scope.orders[indexOrder].push(obj);
                     }
                 }
-                console.log($scope.orders);
 
             }
         );
@@ -88,24 +97,27 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         return colors.type == 'text';
     };
 
-    $scope.openColorImageSelection = function (colorImages) {
+    $scope.openColorImageSelection = function (product, colorImages) {
 
         var modalInstance = $uibModal.open({
             animation: true,
-            templateUrl: 'colorImageSelection.html',
+            templateUrl: 'views/colorImageSelection.html',
             controller: 'ColorImageSelectionController',
             size: 'sm',
             resolve: {
                 items: function () {
                     return colorImages;
+                },
+                previousSelected: function() {
+                    return product.color;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
+            product.color = selectedItem;
         }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
+            console.log('Modal dismissed at: ' + new Date());
         });
     };
 
