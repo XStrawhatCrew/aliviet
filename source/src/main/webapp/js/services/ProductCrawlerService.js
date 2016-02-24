@@ -12,7 +12,8 @@ app.factory("ProductCrawlerService", ['$http', function ($http) {
             },
             'data': {
                 'link': link
-            }
+            },
+            'timeout': 10000
         };
         return $http(req);
     }

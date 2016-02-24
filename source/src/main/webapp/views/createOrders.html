@@ -121,12 +121,11 @@
             <div class="col-sm-4">
                 <input class="form-control" name="link" ng-disabled="isLoadingProduct"
                        placeholder="Nhập link sản phẩm" ng-model="inputLink"
-                       type="url" required style="margin-left: -15px;">
+                       type="text" required style="margin-left: -15px;">
                     <span class="error-msg"
-                          ng-show="orderForm.link.$error.required && orderForm.link.$touched">Link không được bỏ trống.</span>
-                    <span class="error-msg"
-                          ng-show="orderForm.link.$error.url && orderForm.link.$touched"
-                            >Link không hợp lệ.</span>
+                          ng-show="errorLink != ''"
+                            >{{errorLink}}</span>
+
             </div>
 
             <div class="col-sm-2">

@@ -43,52 +43,63 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
     $scope.isLoadingProduct = false;
 
     $scope.setLoadingProduct = function (status) {
+        if(!status) {
+            $scope.inputLink = "";
+        }
         $scope.isLoadingProduct = status;
     };
 
     $scope.addProduct = function () {
-
+        $scope.errorLink = "";
+        if($scope.inputLink == '') return;
         $scope.setLoadingProduct(true);
 
         ProductCrawlerService($scope.inputLink).then(
             function (response) {
+                if(response.data.status) {
+                    var result = response.data.data;
+                    var obj = $scope.makeANewProductObj();
+                    obj.linkSource = $scope.inputLink;
+                    obj.featureImage = result.feature_image;
+                    obj.productName = result.product_name;
+                    obj.shopName = result.shop_name;
+                    obj.colors = result.colors;
+                    obj.sizes = result.sizes;
+                    obj.packages = result.packages;
+                    obj.quantity = 1;
+                    obj.price = 0;
 
-
-                var result = response.data;
-                var obj = $scope.makeANewProductObj();
-                obj.linkSource = $scope.inputLink;
-                obj.featureImage = result.feature_image;
-                obj.productName = result.product_name;
-                obj.shopName = result.shop_name;
-                obj.colors = result.colors;
-                obj.sizes = result.sizes;
-                obj.packages = result.packages;
-                obj.quantity = 1;
-                obj.price = 0;
-
-                if ($scope.orders.length == 0) {
-                    $scope.orders.push([]);
-                    $scope.orders[0].push(obj);
-                } else if ($scope.orders.length == 1 && $scope.orders[0].length == 0) {
-                    $scope.orders[0].push(obj);
-                } else {
-                    var indexOrder = $scope.getIndexOrderSameShop(obj.shopName);
-                    console.log("indexOrder:" + indexOrder);
-                    if (indexOrder == -1) {
-                        var newOrder = [];
-                        newOrder.push(obj);
-                        $scope.orders.push(newOrder);
+                    if ($scope.orders.length == 0) {
+                        $scope.orders.push([]);
+                        $scope.orders[0].push(obj);
+                    } else if ($scope.orders.length == 1 && $scope.orders[0].length == 0) {
+                        $scope.orders[0].push(obj);
                     } else {
-                        $scope.orders[indexOrder].push(obj);
+                        var indexOrder = $scope.getIndexOrderSameShop(obj.shopName);
+                        console.log("indexOrder:" + indexOrder);
+                        if (indexOrder == -1) {
+                            var newOrder = [];
+                            newOrder.push(obj);
+                            $scope.orders.push(newOrder);
+                        } else {
+                            $scope.orders[indexOrder].push(obj);
+                        }
                     }
+                } else {
+                    $scope.errorLink = response.data.errMsg;
                 }
 
                 $scope.setLoadingProduct(false);
-                $scope.inputLink = "";
+            },
+            function () {
+                $scope.errorLink = "Lỗi hệ thống! Refresh lại hoặc thử lại sau!"
+                $scope.setLoadingProduct(false);
             }
         );
 
     };
+
+    $scope.errorLink = "";
 
     $scope.isShowCreateOrdersButton = function () {
         return $scope.orders.length != 0;
