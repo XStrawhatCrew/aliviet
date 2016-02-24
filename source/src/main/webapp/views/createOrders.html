@@ -30,19 +30,20 @@
                     </div>
                     <div class="div-content" style="height:40px; width: 600px; overflow: hidden;">
                         <h4 class="tb-product-name">{{product.productName}}</h4>
-                        <a target="_blank" href="{{product.linkSource}}" class="tb-product-link">{{product.linkSource}}</a>
+                        <a target="_blank" href="{{product.linkSource}}"
+                           class="tb-product-link">{{product.linkSource}}</a>
                     </div>
                     <div class="div-content" style="height: 60px; width: 800px">
                         <table class="table-css">
                             <thead>
-                                <tr>
-                                    <th style="width:20%">Màu Sắc/颜色分类</th>
-                                    <th style="width:16.7%">Size/尺码</th>
-                                    <th style="width:16.7%">Gói/套餐</th>
-                                    <th style="width:8.3%">Số Lượng</th>
-                                    <th style="width:8.3%">Giá</th>
-                                    <th style="width:30%">Ghi Chú</th>
-                                </tr>
+                            <tr>
+                                <th style="width:20%">Màu Sắc/颜色分类</th>
+                                <th style="width:16.7%">Size/尺码</th>
+                                <th style="width:16.7%">Gói/套餐</th>
+                                <th style="width:8.3%">Số Lượng</th>
+                                <th style="width:8.3%">Giá</th>
+                                <th style="width:30%">Ghi Chú</th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr>
@@ -57,7 +58,8 @@
                                          class="img-option"/>
                                     <select ng-show="isShowColorSelection(product.colors)" ng-model="product.color">
                                         <option value="">--Chọn màu sắc--</option>
-                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}</option>
+                                        <option ng-repeat="color in product.colors.data" value="{{color}}">{{color}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td style="width:16.7%">
@@ -75,7 +77,9 @@
                                     </select>
                                     <select ng-show="product.packages.length != 0" ng-model="product.package">
                                         <option value="">--Chọn Size--</option>
-                                        <option ng-repeat="package in product.packages" value="{{package}}">{{package}}</option>
+                                        <option ng-repeat="package in product.packages" value="{{package}}">
+                                            {{package}}
+                                        </option>
                                     </select>
                                 </td>
                                 <td style="width:8.3%"><input type="number" ng-model="product.quantity" min="1"></td>
@@ -102,22 +106,26 @@
                               ng-show="!checkNumber(product.price)">Giá không hợp lệ<br>
                         </span>
                     </div>
+                    <div class="div-button-deleteOrder">
+                        <a ng-click="removeProduct()">
+                            Xoá
+                        </a>
+                    </div>
                 </div>
                 <hr>
             </div>
         </div>
 
 
-        <div class="row" ng-form="validateForm" style="margin-top:20px">
+        <div class="row" style="margin-top:20px">
             <div class="col-sm-4">
-                <input class="form-control" ng-disabled="isLoadingProduct"
+                <input class="form-control" name="link" ng-disabled="isLoadingProduct"
                        placeholder="Nhập link sản phẩm" ng-model="inputLink"
                        type="url" required style="margin-left: -15px;">
                     <span class="error-msg"
-                          ng-show="validateForm.link_{{$index}}.$error.required && (validateForm.link_{{$index}}.$touched || validateForm.$submitted)
-                    ">Link không được bỏ trống.</span>
+                          ng-show="orderForm.link.$error.required && orderForm.link.$touched">Link không được bỏ trống.</span>
                     <span class="error-msg"
-                          ng-show="validateForm.link_{{$index}}.$error.url && (validateForm.link_{{$index}}.$touched || validateForm.$submitted)"
+                          ng-show="orderForm.link.$error.url && orderForm.link.$touched"
                             >Link không hợp lệ.</span>
             </div>
 

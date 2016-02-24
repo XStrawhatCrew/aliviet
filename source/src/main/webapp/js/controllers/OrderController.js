@@ -52,8 +52,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
 
         ProductCrawlerService($scope.inputLink).then(
             function (response) {
-                $scope.setLoadingProduct(false);
-                $scope.inputLink = "";
+
 
                 var result = response.data;
                 var obj = $scope.makeANewProductObj();
@@ -65,7 +64,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                 obj.sizes = result.sizes;
                 obj.packages = result.packages;
                 obj.quantity = 1;
-                obj.price = 1;
+                obj.price = 0;
 
                 if ($scope.orders.length == 0) {
                     $scope.orders.push([]);
@@ -84,6 +83,8 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                     }
                 }
 
+                $scope.setLoadingProduct(false);
+                $scope.inputLink = "";
             }
         );
 
