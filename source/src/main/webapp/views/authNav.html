@@ -1,9 +1,14 @@
-<div class="col-md-2 login-logout-btn col-xs-6" ng-show="!isLoggedIn">
+<div class="col-md-2 login-logout-btn col-xs-6 div-header-cart-singIn-SingOut" ng-show="!isLoggedIn">
     <a href="#/signIn">Đăng nhập</a>
     <span> | </span>
     <a href="#/signUp">Đăng ký</a>
+
 </div>
-<div class="col-md-2 login-logout-btn col-xs-6" ng-show="isLoggedIn">
+<div class="col-md-2 login-logout-btn col-xs-6 div-header-cart-singIn-SingOut" ng-show="isLoggedIn">
+    <a href="#/create-orders-link">
+        <i class="fa fa-shopping-cart"></i> Giỏ hàng(5)
+    </a>
+    <span> | </span>
     <a href="#/user">{{username}}</a>
     <span> | </span>
     <a href="javascript:void(0)" ng-click="signOut()">Thoát</a>

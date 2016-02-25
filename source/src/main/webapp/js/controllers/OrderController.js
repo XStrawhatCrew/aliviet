@@ -43,7 +43,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
     $scope.isLoadingProduct = false;
 
     $scope.setLoadingProduct = function (status) {
-        if(!status) {
+        if (!status) {
             $scope.inputLink = "";
         }
         $scope.isLoadingProduct = status;
@@ -51,12 +51,12 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
 
     $scope.addProduct = function () {
         $scope.errorLink = "";
-        if($scope.inputLink == '') return;
+        if ($scope.inputLink == '') return;
         $scope.setLoadingProduct(true);
 
         ProductCrawlerService($scope.inputLink).then(
             function (response) {
-                if(response.data.status) {
+                if (response.data.status) {
                     var result = response.data.data;
                     var obj = $scope.makeANewProductObj();
                     obj.linkSource = $scope.inputLink;
@@ -120,7 +120,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                 items: function () {
                     return colorImages;
                 },
-                previousSelected: function() {
+                previousSelected: function () {
                     return product.color;
                 }
             }
@@ -144,19 +144,6 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         return -1;
     };
 
-    $scope.removeProduct = function (order, indexProduct, indexOrder) {
-
-        if ($scope.orders.length == 1 && $scope.orders[0].length == 1) {
-            toastr.error("Bạn cần ít nhất một sản phẩm để đặt hàng", "Không thể xoá");
-        } else {
-            order.splice(indexProduct, 1);
-
-            if (order.length == 0) {
-                $scope.orders.splice(indexOrder, 1);
-            }
-        }
-
-    };
 
     $scope.addOrder = function () {
         $scope.orders.push($scope.makeANewOrderObj());
@@ -197,7 +184,40 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
             return true;
         }
     };
+    $scope.removeProduct = function (order, indexOrder, indexProduct) {
 
+        if ($scope.orders.length == 1 && order.length == 1) {
+            $scope.orders.splice(indexOrder, 1);
+        }
+        if ($scope.orders.length == 1 && order.length > 1) {
+            order.splice(indexProduct, 1);
+        }
+        if ($scope.orders.length > 1 && order.length == 1) {
+            $scope.orders.splice(indexOrder, 1);
+        }
+        if ($scope.orders.length > 1 && order.length > 1) {
+            order.splice(indexProduct, 1);
+        }
+
+
+    };
+    $scope.orderIsNull = false;
+    $scope.checkOrderIsNull = function () {
+        if ($scope.orders.length == 0) {
+            return !$scope.orderIsNull;
+
+        } else {
+            return $scope.orderIsNull;
+        }
+
+    };
+    $scope.sendOneOrder = function (order, indexOrder, indexProduct) {
+        //console.log(indexProduct);
+        for (i = 0; i < order.length; i++) {
+            console.log(order[i]);
+        }
+        $scope.orders.splice(indexOrder, 1);
+    };
 
 
 }]);

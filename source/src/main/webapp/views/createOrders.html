@@ -3,6 +3,10 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h2>Tạo đơn hàng</h2>
+
+                <div class="div-notification-order">
+                    <h4 class="notification-order" ng-show="checkOrderIsNull()">Bạn chưa có đơn hàng nào</h4>
+                </div>
             </div>
         </div>
     </div>
@@ -10,7 +14,8 @@
 
 <div class="container">
     <form ng-submit="submit()" name="orderForm" novalidate>
-        <div class="row sub_content block-content-order" ng-repeat="order in orders" ng-form="validateForm">
+        <div class="row sub_content block-content-order" ng-repeat="order in orders"
+             ng-form="validateForm">
             <div class="carousel-intro">
                 <div class="col-md-12">
                     <div class="dividerLatest">
@@ -33,16 +38,16 @@
                         <a target="_blank" href="{{product.linkSource}}"
                            class="tb-product-link">{{product.linkSource}}</a>
                     </div>
-                    <div class="div-content" style="height: 60px; width: 800px">
+                    <div class="div-content" style="height: 60px; width: 780px">
                         <table class="table-css">
                             <thead>
                             <tr>
                                 <th style="width:20%">Màu Sắc/颜色分类</th>
-                                <th style="width:16.7%">Size/尺码</th>
-                                <th style="width:16.7%">Gói/套餐</th>
-                                <th style="width:8.3%">Số Lượng</th>
-                                <th style="width:8.3%">Giá</th>
-                                <th style="width:30%">Ghi Chú</th>
+                                <th style="width:18.7%">Size/尺码</th>
+                                <th style="width:18.7%">Gói/套餐</th>
+                                <th style="width:10.3%">Số Lượng</th>
+                                <th style="width:14%">Giá(NDT)</th>
+                                <th style="width:18.3%">Ghi Chú</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -62,7 +67,7 @@
                                         </option>
                                     </select>
                                 </td>
-                                <td style="width:16.7%">
+                                <td style="width:18.7%">
                                     <select ng-show="product.sizes.length == 0">
                                         <option>Không có</option>
                                     </select>
@@ -71,7 +76,7 @@
                                         <option ng-repeat="size in product.sizes" value="{{size}}">{{size}}</option>
                                     </select>
                                 </td>
-                                <td style="width:16.7%">
+                                <td style="width:18.7%">
                                     <select ng-show="product.packages.length == 0">
                                         <option value="">Không có</option>
                                     </select>
@@ -82,9 +87,9 @@
                                         </option>
                                     </select>
                                 </td>
-                                <td style="width:8.3%"><input type="number" ng-model="product.quantity" min="1"></td>
-                                <td style="width:8.3%"><input type="number" ng-model="product.price" min="0"></td>
-                                <td style="width:30%"><input type="text" ng-model="product.notes"></td>
+                                <td style="width:10.3%"><input type="number" ng-model="product.quantity" min="1"></td>
+                                <td style="width:14%"><input type="number" ng-model="product.price" min="0"></td>
+                                <td style="width:18.3%"><input type="text" ng-model="product.notes"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -107,16 +112,20 @@
                         </span>
                     </div>
                     <div class="div-button-deleteOrder">
-                        <a ng-click="removeProduct()">
-                            Xoá
+                        <a ng-click="removeProduct(order,$parent.$index,$index)" class="btn btn-default">
+                            <span class="fa fa-trash-o"></span>
                         </a>
                     </div>
                 </div>
                 <hr>
             </div>
+            <div class="col-sm-2" style="float: right; padding-right: 0; margin-right: 435px;">
+                <a class="btn btn-info send-order-btn" ng-show="isShowCreateOrdersButton()"
+                   ng-click="sendOneOrder(order,$parent.$index,$index)">
+                    <i class="fa fa-shopping-cart"></i> Kết đơn
+                </a>
+            </div>
         </div>
-
-
         <div class="row" style="margin-top:20px">
             <div class="col-sm-4">
                 <input class="form-control" name="link" ng-disabled="isLoadingProduct"
@@ -144,15 +153,18 @@
             <div class="col-sm-2" style="float: right; padding-right: 0">
                 <a class="btn btn-info send-order-btn" ng-show="isShowCreateOrdersButton()"
                    ng-click="createOrders()">
-                    <i class="fa fa-shopping-cart"></i> Gửi đơn hàng
+                    <i class="fa fa-shopping-cart"></i> Gửi hết đơn hàng
                 </a>
             </div>
 
         </div>
-
-
+        <div class="row div-notes-order">
+            <strong>Chú ý</strong><br>
+            <p>Sản phẩm trong giỏ sẽ tự động xóa trong vòng 30 ngày.<br>
+            Người bán trên website taobao.com thường có quy định về số lượng mua tối thiểu, bội số mỗi sản phẩm, giá trị
+            đơn hàng tối thiểu và sẽ từ chối bán nếu không đáp ứng. Trong trường hợp đó Sếu Đỏ sẽ hủy những đơn hàng này
+            và không báo trước.</p>
+        </div>
     </form>
-
-
 </div>
 
