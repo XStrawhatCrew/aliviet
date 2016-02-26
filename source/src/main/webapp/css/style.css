@@ -166,14 +166,6 @@ a:hover {
     padding: 34px 0 0;
 }
 
-#breadcrumbs ul li {
-    display: inline-block;
-    color: #888;
-    padding: 0 11px 0 0;
-    margin: 0 0 0 5px;
-    background: url(../img/breadcrumbs.png) no-repeat 100% 50%;
-}
-
 #breadcrumbs ul li:last-child a,
 #breadcrumbs ul li a {
     color: #e74c3c;
@@ -461,7 +453,6 @@ a:hover {
     color: #fff;
     font-style: normal;
     font-weight: normal;
-    speak: none;
     display: inline-block;
     text-decoration: inherit;
     margin-right: 0;
@@ -890,6 +881,7 @@ a.read:after {
 
 .carousel-intro {
     position: relative;
+    height: 70px;
 }
 
 .jcarousel-list li {
@@ -1747,31 +1739,9 @@ PAGINATION
     height: 34px;
 }
 
-.scribble .tabs-nav li {
-    margin-right: -2px;
-    border-top-width: 2px;
-    border-left-width: 2px;
-    border-right-width: 2px;
-    -webkit-border-image: url(../images/scribble/border.png) 0 2 0 2 repeat;
-    -moz-border-image: url(../images/scribble/border.png) 0 2 0 2 repeat;
-    border-image: url(../images/scribble/border.png) 0 2 0 2 repeat;
-}
-
 .safari.scribble .tabs-nav li {
     -webkit-border-image: none;
 }
-
-.scribble .tabs-nav li:after {
-    position: absolute;
-    top: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #474747;
-    background-image: url(../images/scribble/line-light.png);
-    content: "";
-}
-
 .tabs-nav li:first-child {
     border-left-width: 1px;
 }
@@ -2084,6 +2054,7 @@ PAGINATION
     padding: 30px 0;
     position: relative;
     color: #fff;
+    margin-top: 100px;
 }
 
 .widfoot_content {
@@ -2842,7 +2813,6 @@ ul.client_items .bwWrapper {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    border-color: -moz-use-text-color #ecf0f1 #f2f2f2;
     border-image: none;
     border-right: 1px solid #f2f2f2;
     border-style: none solid solid;
@@ -3936,29 +3906,7 @@ a.link-style3 {
     background-color: #999;
 }
 
-.shares li a.twitter {
-    background-image: url(../img/social/twitter.png);
-}
 
-.shares li a.facebook {
-    background-image: url(../img/social/facebook.png);
-}
-
-.shares li a.gplus {
-    background-image: url(../img/social/gplus.png);
-}
-
-.shares li a.pinterest {
-    background-image: url(../img/social/pinterest.png);
-}
-
-.shares li a.yahoo {
-    background-image: url(../img/social/yahoo.png);
-}
-
-.shares li a.linkedin {
-    background-image: url(../img/social/linkedin.png);
-}
 
 /* ==================================================
  Post Author
@@ -4345,22 +4293,6 @@ SINGLE POST
     color: #999;
     float: left;
     font: normal 12px "Open sans", Helvetica, Arial, sans-serif;
-}
-
-#site-searchform #searchsubmit {
-    float: left;
-    width: 50px;
-    height: 41px;
-    cursor: pointer;
-    text-indent: -5555em;
-    line-height: 100;
-    overflow: hidden;
-    background: #e74c3c url(../img/search-icon.png) no-repeat center 14px;
-    border: 0;
-}
-
-#site-searchform #searchsubmit:hover {
-    background: #383634 url(../img/search-icon.png) no-repeat center 14px;
 }
 
 #tabs {
@@ -5805,35 +5737,6 @@ SIDE BAR ARCHIVE LIST
 
 /* ========================================================== */
 
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    /* change if the mask should have another color then white */
-    z-index: 999999;
-    /* makes sure it stays on top */
-}
-
-#status {
-    width: 200px;
-    height: 200px;
-    color: #fff;
-    position: absolute;
-    left: 50%;
-    /* centers the loading animation horizontally one the screen */
-    top: 50%;
-    /* centers the loading animation vertically one the screen */
-    background-image: url(../img/preloader.gif);
-    /* path to your loading animation */
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: -100px 0 0 -100px;
-    /* is width and height divided by two */
-}
-
 #status p {
     text-align: center;
 }
@@ -5988,7 +5891,7 @@ SIDE BAR ARCHIVE LIST
 
 .block-content-order {
     border: 1px solid #c1c1c1;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -5997,11 +5900,10 @@ SIDE BAR ARCHIVE LIST
     font-size: 12px;
 }
 
-.error-message{
+.error-message {
     color: red;
-    font-size:12px;
+    font-size: 12px;
 }
-
 
 /* make order website */
 
@@ -6012,114 +5914,7 @@ SIDE BAR ARCHIVE LIST
 /**
  * Material Modal CSS
  */
-.modal {
-    will-change: visibility, opacity;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    /*-webkit-transition-delay: $modal-delay;*/
-    /*transition-delay: $modal-delay;*/
-}
 
-.modal--active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal--align-top {
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-}
-
-.modal__bg {
-    background: transparent;
-}
-
-.modal__dialog {
-    max-width: 600px;
-    padding: 1.2rem;
-}
-
-.modal__content {
-    will-change: transform, opacity;
-    position: relative;
-    padding: 2.4rem;
-    background: #ffebee;
-    background-clip: padding-box;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.modal__content--active {
-    opacity: 1;
-}
-
-.modal__close {
-    z-index: 1100;
-    cursor: pointer;
-}
-
-.modal__trigger {
-    position: relative;
-    display: inline-block;
-    padding: 1.2rem 2.4rem;
-    color: rgba(0, 0, 0, 0.7);
-    line-height: 1;
-    cursor: pointer;
-    background: #ffebee;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.modal__trigger--active {
-    z-index: 10;
-}
-
-.modal__trigger:hover {
-    background: #e5d3d6;
-}
-
-#modal__temp {
-    will-change: transform, opacity;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #ffebee;
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-    opacity: 1;
-    -webkit-transition: opacity 0.1s ease-out, -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
 
 /**
  * Demo specific CSS
@@ -6292,6 +6087,7 @@ h1 {
     width: 100%;
     height: 20px;
 }
+
 .collapse-header {
     border: 1px solid #DDD;
 }
@@ -6304,8 +6100,8 @@ h1 {
     background: white !important;
 }
 
-.margin-auto{
-    margin-top:5px;
+.margin-auto {
+    margin-top: 5px;
 }
 
 .horizontal-order-list {
@@ -6329,7 +6125,98 @@ h1 {
     content: '';
 }
 
+.div-input {
+    float: left;
+    width: 400px;
+}
 
+.div-button {
+    float: left;
+    margin-left: -15px;
+    display: inline;
+}
 
+.div-input input {
+    width: 100%;
+}
 
+.div-img {
+    float: left;
+    margin-left: 31px;
+}
 
+.div-img img {
+    width: 100px;
+    height: 100px;
+}
+
+.div-content {
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.nameProduct {
+    font-size: 18px;
+}
+
+.table-css tbody tr td input {
+    width: 90%;
+}
+
+.table-css tbody tr td button {
+    width: 90%;
+}
+
+.table-css tbody tr td select {
+    width: 90%;
+    padding: 5px 0;
+}
+
+.block-content-order.row{
+    position: relative;
+}
+
+.tb-shop-name {
+    color: #5890ff;
+}
+
+.tb-product-link {
+    color: #5890ff;
+    overflow: hidden;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tb-product-name {
+    color: red;
+    line-height: 0;
+}
+
+.img-option {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+}
+.img-option:hover {
+    border: 2px solid #428bca;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.ajax-loader {
+    background: #FFFFFF url('../img/loading_overlay-.gif') round;
+    width: 40px;
+    height: 40px;
+}
+.div-content-error-area{
+    margin-left: 150px;
+    float: left;
+}
+.div-button-deleteOrder{
+    float: right;
+    margin-top: -31px;
+    margin-right: 20px;
+}

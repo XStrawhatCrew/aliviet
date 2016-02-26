@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', ['ngRoute', 'ngTouch'])
+var app = angular.module('HomeApp', ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'ngTouch' ])
     .run(function ($rootScope) {
         $rootScope.isLoggedIn = restBase.user.isLoggedIn();
         $rootScope.orders = [];
@@ -17,7 +17,7 @@ app.config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/create-orders', {
+        .when('/create-orders-link', {
             controller: 'OrderController',
             templateUrl: 'views/createOrders.html'
         })

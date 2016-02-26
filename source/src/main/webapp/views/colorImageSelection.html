@@ -1,0 +1,16 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Chọn ảnh màu sắc cho sản phẩm!</h3>
+    </div>
+    <div class="modal-body">
+        <img ng-repeat="item in items" ng-src="{{item}}" class="img-option" ng-click="select(item)"/>
+        <br/>
+        <hr/>
+        Bạn đã chọn ảnh: <img ng-src="{{selected.item}}" ng-show="selected.item != ''" style="width: 40px; height: 40px;" />
+        <strong ng-show="selected.item == ''">Bạn vẫn chưa chọn ảnh</strong>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
