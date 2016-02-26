@@ -1,6 +1,5 @@
 package vn.aliviet.order.filter;
 
-import org.glassfish.jersey.server.spi.internal.ValueFactoryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.aliviet.order.authorization.AuthorizationRequestContext;
@@ -24,7 +23,7 @@ import java.io.IOException;
  */
 @Provider
 @Component
-@Priority(3000)
+@Priority(300)
 public class SecurityContextFilter implements ContainerRequestFilter {
 
     protected static final String HEADER_AUTHORIZATION = "Authorization";
@@ -50,7 +49,7 @@ public class SecurityContextFilter implements ContainerRequestFilter {
         String authToken = request.getHeaderString(HEADER_AUTHORIZATION);
         String requestDateString = request.getHeaderString(HEADER_DATE);
         String nonce = request.getHeaderString(HEADER_NONCE);
-        AuthorizationRequestContext context = new AuthorizationRequestContext(request.getUriInfo().getPath(), request.getMethod(),
+        AuthorizationRequestContext context = new AuthorizationRequestContext(request.getUriInfo().getAbsolutePath().toString(), request.getMethod(),
                 requestDateString, nonce, authToken);
         ExternalUser externalUser = authorizationService.authorize(context);
         request.setSecurityContext(new SecurityContextImpl(externalUser));

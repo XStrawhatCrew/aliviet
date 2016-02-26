@@ -169,6 +169,8 @@ public class RequestSigningAuthorizationService implements AuthorizationService 
      * @return true if the token is authorized
      */
     private boolean isAuthorized(User user, AuthorizationRequestContext authorizationRequest, String hashedToken) {
+        //hashedToken la thang tu clint chuyen len token[1]
+        //authorizationRequest.getAuthorizationToken() toan bo authorization
         Assert.notNull(user);
         Assert.notNull(authorizationRequest.getAuthorizationToken());
         String unEncodedString = composeUnEncodedRequest(authorizationRequest);
@@ -177,8 +179,9 @@ public class RequestSigningAuthorizationService implements AuthorizationService 
         if (hashedToken.equals(userTokenHash)) {
             return true;
         }
-        LOG.error("Hash check failed for hashed token: {} for the following request: {} for user: {}",
-                new Object[]{authorizationRequest.getAuthorizationToken(), unEncodedString, user.getId()});
+        LOG.error("hashedToken(client): {} \n userTokenHash: {}, \n userToken: {}", new Object[] { hashedToken, userTokenHash, authorizationToken.getToken()});
+//        LOG.error("Hash check failed for hashed token: {} for the following request: {} for user: {}",
+//                new Object[]{authorizationRequest.getAuthorizationToken(), unEncodedString, user.getId()});
         return false;
     }
 
@@ -189,8 +192,7 @@ public class RequestSigningAuthorizationService implements AuthorizationService 
      * @return encoded token
      */
     private String encodeAuthToken(String token, String unencodedRequest) {
-        byte[] digest = DigestUtils.sha256(token + ":" + unencodedRequest);
-        return new String(Base64.encodeBase64(digest));
+        return DigestUtils.sha256Hex(token + ":" + unencodedRequest);
 
     }
 
