@@ -4,11 +4,12 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.security.Principal;
 
 /**
  * Created by windluffy on 31/12/2015.
  */
-public class ExternalUser {
+public class ExternalUser implements Principal{
     private String id;
 
     private String fullName;
@@ -86,5 +87,10 @@ public class ExternalUser {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String getName() {
+        return this.username;
     }
 }

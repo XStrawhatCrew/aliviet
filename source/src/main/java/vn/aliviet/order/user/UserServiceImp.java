@@ -58,7 +58,7 @@ public class UserServiceImp extends BaseService implements UserService {
         try {
             userToSave.setHashedPassword(userToSave.hashPassword(request.getPassword().getPassword()));
         } catch (Exception e) {
-            throw new AuthenticationException();
+            throw new AuthenticationException("Lỗi hash password!");
         }
         userToSave.setRole(role);
         return userToSave;
@@ -76,20 +76,20 @@ public class UserServiceImp extends BaseService implements UserService {
         }
 
         if (user == null) {
-            throw new AuthenticationException();
+            throw new AuthenticationException("Không thể tìm thấy người dùng với tên đăng nhập/email bạn cung cấp!");
         }
         String hashedPassword = null;
 
         try {
             hashedPassword = user.hashPassword(request.getPassword());
         } catch (Exception e) {
-            throw new AuthenticationException();
+            throw new AuthenticationException("Lỗi hash password!");
         }
 
         if (hashedPassword.equals(user.getHashedPassword())) {
             return new AuthenticatedUserToken(user.getUuid().toString(), createAuthorizationToken(user).getToken());
         } else {
-            throw new AuthenticationException();
+            throw new AuthenticationException("Username/Email hoặc password chưa đúng!");
         }
     }
 
