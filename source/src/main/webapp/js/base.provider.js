@@ -52,6 +52,17 @@ restBase.cookie.set = function (name, value) {
 /* **************** End Cookies ************** */
 
 /* **************** Ajax Method ************** */
+restBase.simulateAuth = function(url, method, uuid, token) {
+    var time = restBase.get_iso_date();
+    var nonce = restBase.makeRandomString();
+    var string_to_hash = token + ":" + url + ',' + method + ',' + time + ',' + nonce;
+    var authorization = uuid + ':' + restBase.hash(string_to_hash);
+    console.log("url: " + url);
+    console.log("time: " + time);
+    console.log("nonce: " + nonce);
+    console.log("authorization: " + authorization);
+};
+
 /**
  * Wrap the API so we can proxy calls while testing.
  */
@@ -61,6 +72,7 @@ restBase.get = function (resource, data, success, error) {
     var nonce = restBase.makeRandomString();
     var string_to_hash = restBase.cookie.get('token') + ':' + url + ',GET,' + time + "," + nonce;
     var authorization = restBase.cookie.get('userId') + ':' + restBase.hash(string_to_hash);
+
 
     var request = $.ajax({
         url: url,
