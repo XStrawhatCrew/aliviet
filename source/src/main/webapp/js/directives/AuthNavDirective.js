@@ -1,7 +1,7 @@
 /**
  * Created by windluffy on 12/01/2016.
  */
-app.directive('authNav', function ($rootScope) {
+app.directive('authNav', ['$rootScope', 'AuthenticationService', function ($rootScope, AuthenticationService) {
     return {
         restrict: 'E',
         scope: {
@@ -17,8 +17,8 @@ app.directive('authNav', function ($rootScope) {
 
             scope.signOut = function () {
                 $rootScope.isLoggedIn = false;
-                restBase.user.logout();
+                AuthenticationService.logout();
             };
         }
     }
-});
+}]);

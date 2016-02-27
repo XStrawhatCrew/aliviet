@@ -41,10 +41,10 @@ app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', funct
         var nonce = $scope.makeRandomString();
         var time = $scope.get_iso_date();
         var token = cookie.get('token');
-        var uuid = cookie.get('uuid');
+        var userId = cookie.get('userId');
 
         var preHashStr = token + ':' + url + ',' + method + ',' + time + ',' + nonce;
-        var authorization = uuid + ':' + $scope.hash(preHashStr);
+        var authorization = userId + ':' + $scope.hash(preHashStr);
 
         return $http({
             'url': url,
@@ -53,7 +53,9 @@ app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', funct
             'headers': {
                 'Authorization': authorization,
                 'x-java-rest-date': time,
-                'nonce': nonce
+                'nonce': nonce,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         });
     };

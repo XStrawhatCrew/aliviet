@@ -41,3 +41,6 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         })
 });
+
+//Global Variables
+var baseURL = "http://localhost:8080/rest";
