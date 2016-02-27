@@ -1,7 +1,11 @@
 package vn.aliviet.order.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import vn.aliviet.order.user.entity.User;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by windluffy on 31/12/2015.
@@ -25,6 +29,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /***
      * find by username
+     *
      * @param username
      * @return
      */
@@ -32,15 +37,17 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /***
      * find by token
+     *
      * @param token
      * @return
      */
-    //User findBySession(String token);
+    @Query("select u from User u where u = (select user from AuthorizationToken where token = ?)")
+    User findBySession(String token);
 
     /***
-     *
      * @param lastUpdated
      * @return
      */
-    //List<User> findByExpiredSession(Date lastUpdated);
+    @Query("select u from User u where u in (select user from AuthorizationToken where lastUpdated < ?)")
+    List<User> findByExpiredSession(Date lastUpdated);
 }
