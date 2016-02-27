@@ -13,9 +13,7 @@ app.service('AuthenticationService', ['$http', 'CookieUtilService', function ($h
             }
         }).then(function (response) {
             var result = response.data;
-            CookieUtilService.set('token', result.token);
-            CookieUtilService.set('userId', result.userId);
-            CookieUtilService.set('username', result.username);
+            setCredentials(result.userId, result.token, loginRequest.username);
             success();
         }, function () {
             fail();
@@ -33,12 +31,26 @@ app.service('AuthenticationService', ['$http', 'CookieUtilService', function ($h
             }
         }).then(function (response) {
             var result = response.data;
-            CookieUtilService.set('token', result.token);
-            CookieUtilService.set('userId', result.userId);
-            CookieUtilService.set('username', result.username);
+            setCredentials(result.userId, result.token, createUserRequest.user.username);
             success();
-        }, function(jqXHR) {
+        }, function (jqXHR) {
             fail(jqXHR);
         });
+    };
+
+    this.logout = function () {
+        clearCredentials();
+    };
+
+    var setCredentials = function (userId, token, username) {
+        CookieUtilService.set('token', token);
+        CookieUtilService.set('userId', userId);
+        CookieUtilService.set('username', username);
+    };
+
+    var clearCredentials = function () {
+        CookieUtilService.remove('token');
+        CookieUtilService.remove('userId');
+        CookieUtilService.remove('username');
     }
 }]);

@@ -30,9 +30,7 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', 'Authenti
             $scope.loginRequest,
             function () {
                 $rootScope.isLoggedIn = true;
-                $scope.$apply(function () {
-                    $location.path("/");
-                });
+                $location.path("/");
             }, function () {
                 toastr.error("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập");
             }
