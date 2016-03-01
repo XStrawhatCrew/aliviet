@@ -2,7 +2,7 @@
  * Created by tinblanc on 1/12/16.
  */
 
-app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerService', '$uibModal', function ($scope, $rootScope, ProductCrawlerService, $uibModal) {
+app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerService', '$uibModal', 'OrdersService', function ($scope, $rootScope, ProductCrawlerService, $uibModal, OrdersService) {
     $scope.orders = [];
     $scope.isCollapsed = false;
     $scope.inputLink = "";
@@ -16,7 +16,7 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
         obj.shopName = "";
         obj.color = "";
         obj.size = "";
-        obj.package = "";
+        obj.packageName = "";
         obj.quantity = "";
         obj.price = "";
         obj.notes = "";
@@ -30,7 +30,12 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
     };
 
     $scope.createOrders = function () {
-        console.log($scope.orders);
+        //console.log($scope.orders);
+        OrdersService.getNextSEQ().then(
+            function(response) {
+                console.log(response);
+            }
+        )
     };
 
 
@@ -72,11 +77,12 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                     if ($scope.orders.length == 0) {
                         $scope.orders.push([]);
                         $scope.orders[0].push(obj);
+                        $scope.sendOneOrder($scope.orders[0]);
                     } else if ($scope.orders.length == 1 && $scope.orders[0].length == 0) {
                         $scope.orders[0].push(obj);
+                        $scope.sendOneOrder($scope.orders[0]);
                     } else {
                         var indexOrder = $scope.getIndexOrderSameShop(obj.shopName);
-                        console.log("indexOrder:" + indexOrder);
                         if (indexOrder == -1) {
                             var newOrder = [];
                             newOrder.push(obj);
@@ -212,11 +218,25 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
 
     };
     $scope.sendOneOrder = function (order, indexOrder, indexProduct) {
-        //console.log(indexProduct);
-        for (i = 0; i < order.length; i++) {
-            console.log(order[i]);
-        }
-        $scope.orders.splice(indexOrder, 1);
+        var createOrdersRequest = {
+            'orders' : [{
+                'products': order,
+                'shopName': order[0].shopName
+            }]
+        };
+
+
+        OrdersService.push(createOrdersRequest).then(
+            function() {
+                //Tạo đơn thành công
+                toastr.success("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập");
+            },
+            function(response) {
+
+                console.log(response.status);
+                console.log(response.statusText);
+            }
+        );
     };
 
 

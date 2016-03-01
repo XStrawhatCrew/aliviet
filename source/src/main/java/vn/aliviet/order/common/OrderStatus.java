@@ -1,9 +1,10 @@
-package vn.aliviet.order.user.entity;
+package vn.aliviet.order.common;
 
 /**
  * Created by windluffy on 31/12/2015.
  */
 public enum OrderStatus {
+    in_cart,
     waiting_process,
     deposited,
     approved,
@@ -17,6 +18,5 @@ public enum OrderStatus {
     sent_vn,
     customer_received,
     rejected,
-    out_of_stock,
-    l
+    out_of_stock
 }

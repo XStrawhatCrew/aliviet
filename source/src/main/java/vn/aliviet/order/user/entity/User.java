@@ -1,5 +1,6 @@
 package vn.aliviet.order.user.entity;
 
+import vn.aliviet.order.common.StockNaming;
 import vn.aliviet.order.model.BaseEntity;
 import vn.aliviet.order.util.HashUtil;
 
@@ -21,6 +22,11 @@ public class User extends BaseEntity {
     private static final int HASH_ITERATIONS = 1000;
 
     private String fullName;
+
+    @Enumerated(EnumType.STRING)
+    private StockNaming.STOCK stockCd;
+
+    private String phoneNumber;
 
     @Column(unique = true)
     private String email;
@@ -49,12 +55,35 @@ public class User extends BaseEntity {
         super(uuid);
         this.setRole(Role.anonymous);
     }
+
     public User(ExternalUser eUser) {
         this();
         this.fullName = eUser.getFullName();
         this.email = eUser.getEmail();
         this.username = eUser.getUsername();
+        this.phoneNumber = eUser.getPhoneNumber();
+        this.stockCd = eUser.getStockCd();
 
+    }
+
+    public String getUserCd() {
+        return this.stockCd.toString() + this.getId();
+    }
+
+    public StockNaming.STOCK getStockCd() {
+        return stockCd;
+    }
+
+    public void setStockCd(StockNaming.STOCK stockCd) {
+        this.stockCd = stockCd;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUsername() {

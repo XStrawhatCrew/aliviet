@@ -20,6 +20,7 @@
     </bean>
 
     <jpa:repositories base-package="vn.aliviet.order.user"/>
+    <jpa:repositories base-package="vn.aliviet.order.biz"/>
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"
           id="transactionManager">
@@ -35,7 +36,7 @@
     </bean>
     <bean id="database" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/aliviet_order_system"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/aliviet_order_system?characterEncoding=utf8"/>
         <property name="username" value="root"/>
         <property name="password" value="hoaanh"/>
         <property name="initialSize" value="10"/>

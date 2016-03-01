@@ -7,5 +7,7 @@
 
     <context:component-scan base-package="vn.aliviet.order.user"/>
     <context:component-scan base-package="vn.aliviet.order.config"/>
+    <context:component-scan base-package="vn.aliviet.order.biz"/>
+    <context:component-scan base-package="vn.aliviet.order.biz.impl"/>
 
 </beans>

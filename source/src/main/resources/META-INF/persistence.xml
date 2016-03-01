@@ -7,14 +7,18 @@
         <class>vn.aliviet.order.user.entity.User</class>
         <class>vn.aliviet.order.user.entity.AuthorizationToken</class>
         <class>vn.aliviet.order.user.entity.VerificationToken</class>
+        <class>vn.aliviet.order.biz.entity.Order</class>
+        <class>vn.aliviet.order.biz.entity.Product</class>
         <properties>
             <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
             <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
-            <property name="hibernate.connection.charSet" value="UTF-8"/>
             <!--<property name="hbm2ddl.auto" value="validate"/>-->
             <property name="show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.connection.useUnicode" value="UTF-8" />
+            <property name="hibernate.connection.characterEncoding" value="UTF-8" />
+            <property name="hibernate.connection.charSet" value="UTF-8" />
         </properties>
 
     </persistence-unit>

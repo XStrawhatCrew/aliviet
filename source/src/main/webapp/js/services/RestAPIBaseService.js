@@ -1,19 +1,19 @@
 /**
  * Created by windluffy on 26/02/2016.
  */
-app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', function ($scope, $http, cookie) {
+app.service('RestAPIBaseService', ['$http', 'CookieUtilService', function ($http, cookie) {
 
     /***
      * Hash @str using SHA256 code
      * @param str
      * @returns {*}
      */
-    $scope.hash = function (str) {
+    this.hash = function (str) {
         var hash = CryptoJS.SHA256(str);
         return hash.toString();
     };
 
-    $scope.get_iso_date = function () {
+    this.get_iso_date = function () {
         var d = new Date();
 
         function pad(n) {
@@ -28,7 +28,7 @@ app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', funct
             + pad(d.getUTCSeconds()) + 'Z'
     };
 
-    $scope.makeRandomString = function () {
+    this.makeRandomString = function () {
         return Math.random().toString(36).substring(2, 15) +
             Math.random().toString(36).substring(2, 15);
     };
@@ -37,15 +37,15 @@ app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', funct
      * Push http method (GET, POST, PUT, ...) with Auth Header to Server
      * Magic do not touch!
      */
-    $scope.magic = function (url, method, data) {
-        var nonce = $scope.makeRandomString();
-        var time = $scope.get_iso_date();
+    this.magic = function (url, method, data) {
+        url = baseURL + url;
+        var nonce = this.makeRandomString();
+        var time = this.get_iso_date();
         var token = cookie.get('token');
         var userId = cookie.get('userId');
 
         var preHashStr = token + ':' + url + ',' + method + ',' + time + ',' + nonce;
-        var authorization = userId + ':' + $scope.hash(preHashStr);
-
+        var authorization = userId + ':' + this.hash(preHashStr);
         return $http({
             'url': url,
             'method': method,
@@ -60,19 +60,19 @@ app.service('RestAPIBaseService', ['$scope', '$http', 'CookieUtilService', funct
         });
     };
 
-    $scope.get = function(url, data) {
-        return $scope.magic(url, 'GET', data);
+    this.get = function(url, data) {
+        return this.magic(url, 'GET', data);
     };
 
-    $scope.post = function(url, data) {
-        return $scope.magic(url, 'POST', data);
+    this.post = function(url, data) {
+        return this.magic(url, 'POST', data);
     };
 
-    $scope.put = function(url, data) {
-        return $scope.magic(url, 'PUT', data);
+    this.put = function(url, data) {
+        return this.magic(url, 'PUT', data);
     };
 
-    $scope.delete = function(url, data) {
-        return $scope.magic(url, 'delete', data);
+    this.delete = function(url, data) {
+        return this.magic(url, 'delete', data);
     };
 }]);

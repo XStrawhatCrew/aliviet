@@ -1,6 +1,7 @@
 package vn.aliviet.order.user.entity;
 
 import org.hibernate.validator.constraints.Length;
+import vn.aliviet.order.common.StockNaming;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -28,6 +29,10 @@ public class ExternalUser implements Principal{
 
     private boolean isVerified;
     String role;
+
+    private String phoneNumber;
+
+    private StockNaming.STOCK stockCd;
 
     public ExternalUser(String id) {
         this.id = id;
@@ -87,6 +92,22 @@ public class ExternalUser implements Principal{
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public StockNaming.STOCK getStockCd() {
+        return stockCd;
+    }
+
+    public void setStockCd(StockNaming.STOCK stockCd) {
+        this.stockCd = stockCd;
     }
 
     @Override
