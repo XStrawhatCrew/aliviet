@@ -77,10 +77,8 @@ app.controller('OrderController', ['$scope', '$rootScope', 'ProductCrawlerServic
                     if ($scope.orders.length == 0) {
                         $scope.orders.push([]);
                         $scope.orders[0].push(obj);
-                        $scope.sendOneOrder($scope.orders[0]);
                     } else if ($scope.orders.length == 1 && $scope.orders[0].length == 0) {
                         $scope.orders[0].push(obj);
-                        $scope.sendOneOrder($scope.orders[0]);
                     } else {
                         var indexOrder = $scope.getIndexOrderSameShop(obj.shopName);
                         if (indexOrder == -1) {

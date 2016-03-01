@@ -80,7 +80,7 @@
                                     <select ng-show="product.packages.length == 0">
                                         <option value="">Không có</option>
                                     </select>
-                                    <select ng-show="product.packages.length != 0" ng-model="product.package">
+                                    <select ng-show="product.packages.length != 0" ng-model="product.packageName">
                                         <option value="">--Chọn Size--</option>
                                         <option ng-repeat="package in product.packages" value="{{package}}">
                                             {{package}}
