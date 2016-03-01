@@ -22,23 +22,23 @@
                                     <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới, từ 3-20
                                         ký tự</b>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.username.$error.required && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập không được để trống</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.username.$error.minlength && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập ít nhất 3 ký tự</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.username.$error.maxlength && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Tên đăng nhập tối đa 20 ký tự</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.username.$error.pattern && (userSignUp.username.$touched || userSignUp.$submitted)">
                                         Chỉ chấp nhận chữ cái, số, hoặc gạch dưới</p>
 
-                                    <p class="error-message" ng-show="messageErrorUsername">
+                                    <p class="error-msg" ng-show="messageErrorUsername">
                                         USERNAME này đã tồn tại
                                     </p>
 
@@ -59,7 +59,7 @@
                                            ng-required="true">
                                     <b class="tooltip tooltip-bottom-right">Họ tên thật của bạn</b>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.fullName.$error.required && (userSignUp.fullName.$touched || userSignUp.$submitted)">
                                         Họ Tên không được để trống</p>
 
@@ -80,17 +80,17 @@
                                            ng-required="true">
 
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.password.$error.required && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         không được để trống</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.password.$error.minlength && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         ít nhất 6 ký tự</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.password.$error.maxlength && (userSignUp.password.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         nhiều nhất 50 ký tự</p>
@@ -114,7 +114,7 @@
                                            compare-to="createUserRequest.password">
                                     <b class="tooltip tooltip-bottom-right">Nhập lại password</b>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.confirmPassword.$invalid  && ( userSignUp.confirmPassword.$touched || userSignUp.$submitted)">
                                         Mật khẩu
                                         phải giống nhau
@@ -139,16 +139,16 @@
                                            ng-required="true" ng-change="checkEmailExisted()">
                                     <b class="tooltip tooltip-bottom-right">Chấp nhận chữ, số, hoặc gạch dưới</b>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.email.$error.required && (userSignUp.email.$touched || userSignUp.$submitted)">
                                         Email
                                         không được để trống</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.email.$error.pattern && (userSignUp.email.$touched || userSignUp.$submitted)">
                                         Email sai định dạng</p>
 
-                                    <p class="error-message" ng-show="messageErrorEmail">
+                                    <p class="error-msg" ng-show="messageErrorEmail">
                                         EMAIL này đã tồn tại
                                     </p>
 
@@ -171,24 +171,42 @@
                                            ng-pattern="/^\+{0,1}[0-9]+$/" ng-minlength="10" ng-maxlength="20" required>
                                     <b class="tooltip tooltip-bottom-right">Nhập số điện thoại của bạn</b>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.phoneNumber.$error.required && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại không được để trống</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.phoneNumber.$error.pattern && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại không hợp lệ</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.phoneNumber.$error.minlength && (userSignUp.phoneNumber.$touched || userSignUp.$submitted)">
                                         Số điện thoại ít nhất 10 ký tự</p>
 
-                                    <p class="error-message"
+                                    <p class="error-msg"
                                        ng-show="userSignUp.phoneNumber.$error.maxlength && userSignUp.phoneNumber.$touched && userSignUp.$submitted">
                                         Số điện thoại nhiều nhất 20 ký tự</p>
                                 </label>
 
 
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="row">
+                            <label class="label col col-4">Chọn kho về</label>
+                            <div class="col col-8">
+                                <label class="select">
+                                    <select name="stock" required ng-model="createUserRequest.user.stockCd">
+                                        <option value="" selected disabled>Chọn Kho Về</option>
+                                        <option value="HN">Hà Nội</option>
+                                        <option value="SG">Sài Gòn</option>
+                                    </select>
+                                    <i></i>
+                                    <p class="error-msg"
+                                       ng-show="userSignUp.stock.$error.required && userSignUp.$submitted">
+                                        Bạn chưa chọn kho</p>
+                                </label>
                             </div>
                         </div>
                     </section>
@@ -201,7 +219,7 @@
                                 <label class="checkbox">
                                     <input type="checkbox" name="check" ng-model="checked"><i></i>Tôi đồng ý <a href="#/signIn" target="_blank">quy
                                     định</a> của công ty.
-                                    <p class="error-message" ng-show="userSignUp.$submitted && !checked">Để sử dụng dịch
+                                    <p class="error-msg" ng-show="userSignUp.$submitted && !checked">Để sử dụng dịch
                                         vụ, bạn phải đồng ý với các quy
                                         định của công ty chúng tôi.
                                     </p>

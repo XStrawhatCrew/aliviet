@@ -17,6 +17,7 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', 'Authenti
             "email": "",
             "fullName": "",
             "phoneNumber": "",
+            "stockCd": ""
         },
         "password": "",
         "confirmPassword": ""
@@ -44,7 +45,9 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', 'Authenti
             "user": {
                 "username": $scope.createUserRequest.user.username,
                 "email": $scope.createUserRequest.user.email,
-                "fullName": $scope.createUserRequest.user.fullName
+                "fullName": $scope.createUserRequest.user.fullName,
+                "phoneNumber": $scope.createUserRequest.user.phoneNumber,
+                "stockCd": $scope.createUserRequest.user.stockCd
             },
             "password": $scope.createUserRequest.password
         };
@@ -53,13 +56,12 @@ app.controller('AuthController', ['$scope', '$location', '$rootScope', 'Authenti
         AuthenticationService.signUp(
             data,
             function () {
-                toastr.success("Tạo tài khoản thành công");
                 $location.path("/signUpSuccess");
             },
             function (jqXHR) {
                 console.log(jqXHR);
                 var jsonResponseText = $.parseJSON(jqXHR.data);
-                toastr.error(jsonResponseText.applicationMessage, "Lỗi hệ thống! Tạo tài khoản thất bại!");
+                toastr.error(jsonResponseText.applicationMessage, "Lỗi hệ thống! Tạo tài khoản thất bại!", {timeOut: 2000});
                 $scope.errorMessage = jsonResponseText.applicationMessage;
             }
         );

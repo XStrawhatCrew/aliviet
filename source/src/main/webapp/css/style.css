@@ -6257,5 +6257,6 @@ h1 {
 }
 .div-notes-order p{
     margin-top: 10px;
-    line-height: 22px;
+    line-height: 30px;
+    text-align: justify;
 }
