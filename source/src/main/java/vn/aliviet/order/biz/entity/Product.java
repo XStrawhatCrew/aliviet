@@ -2,10 +2,7 @@ package vn.aliviet.order.biz.entity;
 
 import vn.aliviet.order.model.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -16,19 +13,30 @@ import java.util.UUID;
 @Entity
 @Table(name = "tbl_product")
 public class Product extends BaseEntity {
+    @Column(length = 1000)
     private String linkSource;
     private String productName;
     private String shopName;
+
+    @Column(length = 1000)
     private String color;
+
     private String size;
     private String packageName;
+
+    @Column(length = 1000)
     private String featureImage;
     private double price;
     private int quantity;
+
+    @Column(length = 1000)
     private String notes;
 
+    @Column(length = 5000)
     private String crwColors;
+    @Column(length = 5000)
     private String crwSizes;
+    @Column(length = 5000)
     private String crwPackages;
 
     @ManyToOne
