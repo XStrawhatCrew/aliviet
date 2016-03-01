@@ -21,10 +21,14 @@
                     <div class="dividerLatest">
                         <h4>Đơn Hàng #<span>{{ $index +1}}</span>. Tên Shop: <span class="tb-shop-name">{{getShopName(order)}}</span>
                         </h4>
-
+                        <div class="col-sm-2" style="float: right; padding-right: 0; margin-top: -46px">
+                            <a class="btn btn-danger send-order-btn" ng-show="isShowCreateOrdersButton()"
+                               ng-click="">
+                                <i class="fa fa-shopping-cart"></i> Xóa đơn hàng
+                            </a>
+                        </div>
                         <div class="gDot"></div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
 
@@ -81,7 +85,7 @@
                                         <option value="">Không có</option>
                                     </select>
                                     <select ng-show="product.packages.length != 0" ng-model="product.packageName">
-                                        <option value="">--Chọn Size--</option>
+                                        <option value="">--Chọn Gói--</option>
                                         <option ng-repeat="package in product.packages" value="{{package}}">
                                             {{package}}
                                         </option>
@@ -102,7 +106,7 @@
                               ng-show="checkSize(product,product.size)">Bạn chưa chọn size<br>
                         </span>
                         <span class="error-msg"
-                              ng-show="checkPackage(product,product.package)">Bạn chưa chọn Gói<br>
+                              ng-show="checkPackage(product,product.packageName)">Bạn chưa chọn Gói<br>
                         </span>
                         <span class="error-msg"
                               ng-show="!checkNumber(product.quantity)">Số lượng không hợp lệ<br>
@@ -119,12 +123,22 @@
                 </div>
                 <hr>
             </div>
-            <div class="col-sm-2" style="float: right; padding-right: 0; margin-right: 435px;">
-                <a class="btn btn-info send-order-btn" ng-show="isShowCreateOrdersButton()"
-                   ng-click="sendOneOrder(order,$parent.$index,$index)">
-                    <i class="fa fa-shopping-cart"></i> Kết đơn
-                </a>
+            <div class="row" style="margin: auto">
+                <div class="col-sm-7">
+                    <a class="btn btn-info send-order-btn" ng-show="isShowCreateOrdersButton()"
+                       ng-click="sendOneOrder(order,$parent.$index,$index)">
+                        <i class="fa fa-shopping-cart"></i> Kết đơn ngay
+                    </a>
+                </div>
+                <div class="col-sm-5">
+                    <a class="btn btn-warning send-order-btn" ng-show="isShowCreateOrdersButton()"
+                       ng-click="">
+                        <i class="fa fa-shopping-cart"></i> Lưu đơn hàngs
+                    </a>
+                </div>
             </div>
+
+
         </div>
         <div class="row" style="margin-top:20px">
             <div class="col-sm-4">
@@ -156,14 +170,19 @@
                     <i class="fa fa-shopping-cart"></i> Gửi hết đơn hàng
                 </a>
             </div>
+            <div class="col-sm-2">
+                <a class="btn btn-warning send-order-btn" ng-show="isShowCreateOrdersButton()"
+                   ng-click="">
+                    <i class="fa fa-shopping-cart"></i> Lưu tất cả đơn hàng
+                </a>
+            </div>
 
         </div>
         <div class="row div-notes-order">
             <strong>Chú ý</strong><br>
-            <p>Sản phẩm trong giỏ sẽ tự động xóa trong vòng 30 ngày.<br>
-            Người bán trên website taobao.com thường có quy định về số lượng mua tối thiểu, bội số mỗi sản phẩm, giá trị
-            đơn hàng tối thiểu và sẽ từ chối bán nếu không đáp ứng. Trong trường hợp đó Sếu Đỏ sẽ hủy những đơn hàng này
-            và không báo trước.</p>
+            <p>Sản phẩm trong giỏ sẽ tự động xóa trong vòng 3 ngày nếu bạn chưa đặt cọc<br>
+            Người bán trên các website thường có quy định về số lượng mua tối thiểu, bội số mỗi sản phẩm, giá trị
+            đơn hàng tối thiểu và sẽ từ chối bán nếu không đáp ứng. Trong trường hợp đó <Strong>Alimex</Strong> sẽ hủy những đơn hàng này.</p>
         </div>
     </form>
 </div>
